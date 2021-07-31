@@ -2,12 +2,28 @@
 ### Overview
 
 ### Purpose
- 
+
+This software contains deep learning and computer vision code that may be used
+Thermal Image Super-Resolution although it may also be used for super-resolution
+of the visual image space. This repository was created to contain experiments
+and numerous super-resolution models for our 2021 International Conference on
+Computer Vision Systems paper entitled "Thermal Image Super-Resolution Using
+Second-Order Channel Attention with Varying Receptive Fields". If you find this
+project useful, then please consider citing our work:
+
+```
+@inproceedings{gutierrez2021Thermal, 
+title={Thermal Image Super-Resolution Using Second-Order Channel Attention with
+Varying Receptive Fields},
+author ={Gutierrez, Nolan B and Beksi, William J},
+booktitle={International Conference on Computer Vision Systems},
+year={2021}
+``` 
 ### Installation
 To run the experiments within this repository, `opencv`, `numpy`, `tensorflow`,
 and `pillow` need to be installed along with their dependencies. The experiments
 were conducted on Ubuntu 20 using an Anaconda 3 environment. To create the
-environment, run the following commands from an ubuntu terminal with Anaconda 3
+environment, run the following commands from an Ubuntu terminal with Anaconda 3
 installed:
   
 Create the conda environment:
