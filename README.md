@@ -2,6 +2,14 @@
  [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/keras-team/keras/blob/master/LICENSE)
 ### Overview
 
+A key application in computer vision is performing super-resolution of degraded
+images by learning a mapping from degraded low-resolution images to
+high-resolution images. This repository consists of a large library of different
+super-resolution models and modules along with documentation of these modules
+for thermal and RGB super-resolution. Specifically, we implement experiments
+designed to find how additions of enhanced convolutions and novel modules
+affects the performance gains for the task of super-resolution.
+
 ### Purpose
 
 This software contains deep learning and computer vision code that may be used
@@ -97,8 +105,9 @@ if using both thermal and RGB images.
 We have created many different models in the file named `ModelLists.py`. The
 program is built so that the user can select several of these models as
 defined in the dictionary constructed in the `__init__(self)` method of the
-class `Model_Lists()`. If the user wants to add more models to the `modelnames
-`list on line 90 of `train.py`:
+class `Model_Lists()`. If the user wants to train on additional models from the
+`ModelLists.py` file, then the user can add  to the `modelnames` list on line 
+90 of `train.py`:  
  
 `modelnames = ['rcan']` to `modelnames = ['rcan', 'rcan_DDSOCA']`
  
