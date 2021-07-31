@@ -11,10 +11,15 @@ environment, run the following commands from an ubuntu terminal with Anaconda 3
 installed:
   
 Create the conda environment:
+ 
 `conda create -n myenv tensorflow==2.1, numpy, pip, pillow`
+ 
 Activate environment
+ 
 `conda activate myenv`
+ 
 Install opencv 
+ 
 `conda install -c conda-forge opencv`
  
 #Usage
