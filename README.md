@@ -11,7 +11,7 @@ Computer Vision Systems paper entitled "Thermal Image Super-Resolution Using
 Second-Order Channel Attention with Varying Receptive Fields". If you find this
 project useful, then please consider citing our work:
 
-```
+```bibtex
 @inproceedings{gutierrez2021Thermal, 
 title={Thermal Image Super-Resolution Using Second-Order Channel Attention with
 Varying Receptive Fields},
