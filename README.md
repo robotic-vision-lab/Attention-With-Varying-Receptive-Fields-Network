@@ -1,9 +1,9 @@
 ### Attention-With-Varying-Receptive-Fields-Network
-###Overview
+### Overview
 
-###Purpose
+### Purpose
  
-###Installation
+### Installation
 To run the experiments within this repository, `opencv`, `numpy`, `tensorflow`,
 and `pillow` need to be installed along with their dependencies. The experiments
 were conducted on Ubuntu 20 using an Anaconda 3 environment. To create the
@@ -22,7 +22,7 @@ Install opencv
  
 `conda install -c conda-forge opencv`
  
-###Usage
+### Usage
  
 Our driver file is equipped with a simple GUI which allows the user to select
 datasets for training and testing. In our driver file, simply change the boolean
@@ -40,8 +40,8 @@ Pressing save will save the directories to a json file named `saved_dirs.json
 the root directory following the defined list in line 60. This is highly 
 recommended to do since the KAIST dataset is very large and our current 
 implementation takes every 200 images. When using the KAIST dataset for 
-evaluation, it is also recommended to simply add `"KAIST"` to the `saved_dirs.
-json` file. 
+evaluation, it is also recommended to simply add `"KAIST"` to the `saved_dirs.json` 
+file. 
  
 We have created many different models in the file named `ModelLists.py`. The
 program is built so that the user can select several of these models as
@@ -67,8 +67,8 @@ the checkpoint directory will default to `model_name/dataset/scale`.
 
 
  
-###Running Experiments
+### Running Experiments
   
 
-###License
+### License
 [MIT](https://github.com/robotic-vision-lab/Attention-With-Varying-Receptive-Fields-Network/blob/main/LICENSE)
