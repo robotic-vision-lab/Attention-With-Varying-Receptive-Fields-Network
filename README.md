@@ -44,7 +44,8 @@ evaluation, it is also recommended to simply add `"KAIST"` to the `saved_dirs.js
 file. For convenience, here is an example of how `saved_dirs.json` should look
 if using both thermal and RGB images.
  
-`{"thermal": 
+```
+{"thermal": 
   {"train_dirs": 
     ["./Datasets/Thermal/train/640_flir_hr"],
   "test_dirs":
@@ -68,7 +69,8 @@ if using both thermal and RGB images.
     "./Datasets/Thermal/test/640_flir_hr",
     "./Datasets/Thermal/test/Flir_test",
     "./Datasets/Thermal/test/160_domo_lr"], 
-  "val_dirs": ["./Datasets/DIV2K/test"]}}`
+  "val_dirs": ["./Datasets/DIV2K/test"]}}
+```
  
 We have created many different models in the file named `ModelLists.py`. The
 program is built so that the user can select several of these models as
