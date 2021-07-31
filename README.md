@@ -48,7 +48,7 @@ defined in the dictionary constructed in the `__init__(self)` method of the
 class `Model_Lists()`. If the user wants to add more models to the `modelnames
 `list on line 90 of `train.py`:
  
-`modelnames = ['rcan']` to `modelnames = ['rcan', 'rcan_DDSOCA']
+`modelnames = ['rcan']` to `modelnames = ['rcan', 'rcan_DDSOCA']`
  
 
 
