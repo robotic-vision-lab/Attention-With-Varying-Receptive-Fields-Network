@@ -10,14 +10,19 @@ and numerous super-resolution models for our 2021 International Conference on
 Computer Vision Systems paper entitled "Thermal Image Super-Resolution Using
 Second-Order Channel Attention with Varying Receptive Fields". If you find this
 project useful, then please consider citing our work:
+ 
+ N. B. Gutierrez and W. J. Beksi, “Thermal image super-resolution using second-
+order channel attention with varying receptive fields,” in *International 
+Conference on Computer Vision Systems (ICVS)*, 2021. 
 
-```bibtex
+ ```bibtex
 @inproceedings{gutierrez2021Thermal, 
-title={Thermal Image Super-Resolution Using Second-Order Channel Attention with
-Varying Receptive Fields},
-author ={Gutierrez, Nolan B and Beksi, William J},
-booktitle={International Conference on Computer Vision Systems},
-year={2021}
+  title={Thermal Image Super-Resolution Using Second-Order Channel Attention with
+  Varying Receptive Fields},
+  author ={Gutierrez, Nolan B and Beksi, William J},
+  booktitle={International Conference on Computer Vision Systems (ICVS)},
+  year={2021}
+}
 ``` 
 ### Installation
 To run the experiments within this repository, `opencv`, `numpy`, `tensorflow`,
