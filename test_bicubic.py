@@ -166,6 +166,9 @@ if __name__ == '__main__':
         scale_init = None
         for method in ['normal']:
           for scale in scales: 
+              ################################################################
+              ### CREATE HEADERS FOR DATA TO BE SAVED
+              ################################################################
               with open('./Data/train_' + dataset + str(scale) + method + modelname + '.csv', 'w', newline = '\n') as f:
                 writer = csv.writer(f)
                 writer.writerow(['Dataset','scale','Filters','Parameters','Epoch','Loss','PSNR','SSIM'])
@@ -173,13 +176,12 @@ if __name__ == '__main__':
                 with open('./Data/test' + os.path.basename(t_dir) + str(scale) + method + modelname + '.csv', 'w', newline = '\n') as f:
                   writer = csv.writer(f)
                   writer.writerow(['Dataset','Test Set','scale','Filters','Parameters','loss','psnr', 'ssim', 'lossstd', 'psnrstd', 'ssimstd'])
-              #######################################
-              ## Train models
               work_dir = os.path.join(modelname, dataset, str(scale))
               if not os.path.exists(work_dir): os.makedirs(work_dir) 
               c_dir = os.path.join(work_dir, str(scale) + '/')
-              #################################
-              ## Evaluate
+              ################################################################
+              ### EVALUATE FOR EACH TESTING DIRECTORY FOUND IN SAVED_DIRS.JSON
+              ################################################################
               for t_dir in  test_dir: 
 
                   losses,psnrs,ssims = [],[],[]
@@ -195,16 +197,21 @@ if __name__ == '__main__':
                   else:
                     filenames = list_full_paths(t_dir);filenames.sort()
                   for tidx,filename in enumerate(filenames,1):
+                    ##########################################################
+                    ### CREATE PREDICTION USING BICUBIC INTERPOLATION
+                    ##########################################################
                     lr,hr = getRawImage(scale,filename)
                     hr = hr.astype(np.float32)
                     sr = Image.fromarray((lr * 255).squeeze())
                     pred = np.expand_dims(np.array(sr.resize((sr.width * scale,sr.height * scale))), axis = -1)
-                    #pred = np.expand_dims(np.array(cv2.resize(np.array(sr),(sr.width * scale,sr.height * scale),interpolation=cv2.INTER_CUBIC)), axis = -1)
                     pred = np.expand_dims(pred, axis = 0)
                     loss = mse(hr,pred)
                     psnrn = psnr(hr,pred)
                     ssimn = ssim(hr,pred)
                     losses.append(loss );psnrs.append(psnrn);ssims.append(ssimn);
+                    ##########################################################
+                    ### SAVE DEGRADED INPUT IMAGES AND SUPER-RESOLUTION RESULTS 
+                    ##########################################################
                     if creating_results :
                       pd =Image.fromarray(pred.squeeze().astype(np.uint8))
                       lrd = Image.fromarray((lr * 255).squeeze().astype(np.uint8))
@@ -216,13 +223,13 @@ if __name__ == '__main__':
                       lrd.save(os.path.join(work_dir,os.path.basename(t_dir)+ '/inputs/image' + str(tidx) + '.png'))
                   lossmean,ssimmean,psnrmean= np.mean(losses),np.mean(ssims), np.mean(psnrs)
                   lossstd,ssimstd,psnrstd = np.std(losses),np.std(ssims),np.std(psnrs)
-                  
+                  ############################################################
+                  ### STORE NEW DATA TO ./DATA/ DIRECTORY
+                  ############################################################
                   with open('./Data/test'+os.path.basename(t_dir) +
 str(scale) + method + modelname + '.csv', 'a', newline = '\n') as f:
                     writer = csv.writer(f)
                     writer.writerow([dataset,os.path.basename(t_dir),scale,filters,0,lossmean,psnrmean,ssimmean, lossstd,ssimstd,psnrstd])                 
-            #######################################3
-            ## Produce Files
           restore = True 
         epochs = 5
         tf.keras.backend.clear_session()
