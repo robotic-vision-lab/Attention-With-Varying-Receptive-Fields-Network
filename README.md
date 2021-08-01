@@ -79,31 +79,42 @@ datasets = ['thermal', 'div2k']`. For convenience, here is an example of how
 `saved_dirs.json` should look if using both thermal and RGB images.
  
 ```
-{"thermal": 
-  {"train_dirs": 
-    ["./Datasets/Thermal/train/640_flir_hr"],
-  "test_dirs":
-    ["KAIST","./Datasets/Thermal/test/320_axis_mr",
-    "./Datasets/Thermal/test/640_flir_hr",
-    "./Datasets/Thermal/test/Flir_test",
-    "./Datasets/Thermal/test/160_domo_lr"],
-    "val_dirs":
-    ["./Datasets/Thermal/test/Flir_test"]},
-
-
-"div2k": 
-  {"train_dirs":
-    ["./Datasets/DIV2K/train"],
-  "test_dirs":
-    ["./Datasets/Set14",
-    "./Datasets/Set5",
-    "./Datasets/DIV2K/test",
-    "./Datasets/Urban100","./Datasets/BSDS100",
-    "./Datasets/Thermal/test/320_axis_mr",
-    "./Datasets/Thermal/test/640_flir_hr",
-    "./Datasets/Thermal/test/Flir_test",
-    "./Datasets/Thermal/test/160_domo_lr"], 
-  "val_dirs": ["./Datasets/DIV2K/test"]}}
+{
+  "thermal": {
+    "train_dirs": [
+      "./Datasets/Thermal/train/640_flir_hr"
+    ],
+    "test_dirs": [
+      "KAIST",
+      "./Datasets/Thermal/test/320_axis_mr",
+      "./Datasets/Thermal/test/640_flir_hr",
+      "./Datasets/Thermal/test/Flir_test",
+      "./Datasets/Thermal/test/160_domo_lr"
+    ],
+    "val_dirs": [
+      "./Datasets/Thermal/test/Flir_test"
+    ]
+  },
+  "div2k": {
+    "train_dirs": [
+      "./Datasets/DIV2K/train"
+    ],
+    "test_dirs": [
+      "./Datasets/Set14",
+      "./Datasets/Set5",
+      "./Datasets/DIV2K/test",
+      "./Datasets/Urban100",
+      "./Datasets/BSDS100",
+      "./Datasets/Thermal/test/320_axis_mr",
+      "./Datasets/Thermal/test/640_flir_hr",
+      "./Datasets/Thermal/test/Flir_test",
+      "./Datasets/Thermal/test/160_domo_lr"
+    ],
+    "val_dirs": [
+      "./Datasets/DIV2K/test"
+    ]
+  }
+}
 ```
  
 We have created many different models in the file named `ModelLists.py`. The
