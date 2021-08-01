@@ -42,7 +42,7 @@ installed:
   
 Create the conda environment:
  
-`conda create -n myenv tensorflow==2.4.1, numpy==1.19.2, pip, pillow==7.2.0`
+`conda create -n myenv tensorflow==2.4.1 numpy==1.19.2  pip  pillow==7.2.0`
  
 Activate environment
  
