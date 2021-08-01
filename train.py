@@ -42,6 +42,7 @@ if __name__ == '__main__':
     # Each of the following lists will be for one iteration of 
     # outer testing loop. There may be more than one testing_directory
     # for in each of the test_dirs tuples
+30
     saved_dirs = 'saved_dirs.json'
     datasets = [ 'thermal']
     dirTypes = ['train_dirs', 'test_dirs','val_dirs']
@@ -87,7 +88,7 @@ if __name__ == '__main__':
     histories = {} 
   
     modelnames = [ 'rcan_DDSOCA']
-    opt = keras.optimizers.Adam(.0001)
+    opt = keras.optimizers.Adam(.0001) # Beginning learning rate
     modelfuncs = ml.get_models(modelnames)
     for modelfunc, modelname in zip(modelfuncs, modelnames):
       
@@ -99,6 +100,9 @@ if __name__ == '__main__':
           histories[modelname][dataset] = {}
           scale_init = None
           for scale in scales: 
+              ################################################################
+              ### CREATE HEADER OF TESTING AND TRAINING RESULTS
+              ################################################################
               with open('./Data/train_'+ dataset + str(scale) + modelname + '.csv', 'w', newline = '\n') as f:
                 writer = csv.writer(f)
                 writer.writerow(['Dataset','scale','Filters','Parameters','Epoch','Loss','PSNR','SSIM'])
@@ -106,8 +110,9 @@ if __name__ == '__main__':
                 with open('./Data/test' + os.path.basename(t_dir) + str(scale) + modelname + '.csv', 'w', newline = '\n') as f:
                   writer = csv.writer(f)
                   writer.writerow(['Dataset','Test Set','scale','Filters','Parameters','loss','psnr', 'ssim', 'lossstd', 'psnrstd', 'ssimstd'])
-              #######################################
-              ## Train models
+              ################################################################
+              ### COMPILE MODEL AND CREATE WORKING DIRECTORY IF IT DOES NOT EXIST
+              ################################################################
               work_dir = os.path.join(modelname, dataset, str(scale))
               if not os.path.exists(work_dir): 
                 os.makedirs(work_dir) 
@@ -129,12 +134,12 @@ if __name__ == '__main__':
                   ids = random.choices(train_indices, k = batch_size)
                   batchx,batchy = [train_data[idx][0] for idx in ids],[train_data[idx][1] for idx in ids]
                   lr ,hr= np.concatenate(batchx, axis = 0), np.concatenate(batchy,axis = 0)
-                  #lr,hr = train_data[idx]
-                #for idx,filename in enumerate(os.listdir(train_dir)[:]):
-                #  lr,hr = getRawImage(scale,os.path.join(train_dir,filename))
                   hr = hr.astype(np.float32)
                   model._layers[0] = layers.InputLayer((lr.shape[1],lr.shape[2],channel))
                   with tf.GradientTape() as tape:
+                    ##########################################################
+                    ### GET MODEL PREDICTION
+                    ##########################################################
                     pred = model(lr)
                     l1_reg_term = sum([tf.reduce_sum(tf.abs(_var)) for _var in model.trainable_variables])
                     loss = mse(hr,pred)# .0001 *l1_reg_term
@@ -143,6 +148,9 @@ if __name__ == '__main__':
                     grads = tape.gradient(loss,model.trainable_variables)
                   print('loss: ', loss.numpy(), 'ssim: ', ssimn.numpy(), 'psnr: ', psnrn.numpy())
                   if idx % 10 == 0: print('step: ', idx)
+                  ############################################################
+                  ### Apply Weight Updates
+                  ############################################################
                   opt.apply_gradients(zip(grads,model.trainable_variables))
                   with open('./Data/train_' +dataset + str(scale) + modelname + '.csv', 'a', newline = '\n') as f:
                     writer = csv.writer(f)
@@ -151,8 +159,9 @@ if __name__ == '__main__':
                   #  best_loss = loss.numpy()
                   if epoch == epochs - 1 and save:
                     model.save_weights(os.path.join(work_dir, 'checkpoint/checkpoint'))
-                  #################################
+                  ############################################################
                   ## Evaluate
+                  ############################################################
                   if is_evaluating and idx % 400  == 0  :
                     for t_dir in  test_dir: 
                         if t_dir == "KAIST":
@@ -174,6 +183,9 @@ if __name__ == '__main__':
                           pred = model(lr) 
                           lossn,psnrn,ssimn = mse(hr,pred),psnr(hr,pred), ssim(hr,pred)
                           losses.append(lossn);psnrs.append(psnrn);ssims.append(ssimn);
+                          #####################################################
+                          ###  CREATING RESULTS
+                          #####################################################
                           if creating_results and epoch == epochs -1 or epoch == 0 :
                               pd =Image.fromarray(pred.numpy().squeeze().astype(np.uint8))
                               lrd = Image.fromarray((lr * 255).squeeze().astype(np.uint8))
@@ -185,14 +197,16 @@ if __name__ == '__main__':
                               lrd.save(os.path.join(work_dir,os.path.basename(t_dir)+ '/inputs/image' + str(tidx) + '.png'))
                         lossmean,ssimmean,psnrmean= np.mean(losses),np.mean(ssims), np.mean(psnrs)
                         lossstd,ssimstd,psnrstd = np.std(losses),np.std(ssims),np.std(psnrs)
-                        
+                        ######################################################
+                        ### WRITE DATA TO ./DATA/ DIRECTORY
+                        ######################################################
                         with open('./Data/test'+os.path.basename(t_dir) + str(scale) + modelname + '.csv', 'a', newline = '\n') as f:
                           writer = csv.writer(f)
                           writer.writerow([dataset,os.path.basename(t_dir),scale,filters,model.count_params(),lossmean,psnrmean,ssimmean, lossstd,ssimstd,psnrstd])                 
-                #opt.lr.assign(opt.lr/2)
 
-              #######################################3
-              ## Produce                
+              ################################################################
+              ## Learning Rate Schedule
+              ################################################################
                 if epoch == 10: opt.lr.assign(1e-5)
                 elif epoch == 60: opt.lr.assign(5e-6)
                 elif epoch == 60: opt.lr.assign(2.5e-6)
