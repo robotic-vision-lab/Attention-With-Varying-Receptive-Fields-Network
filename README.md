@@ -24,7 +24,7 @@ project useful, then please consider citing our work:
 order channel attention with varying receptive fields,” in *International 
 Conference on Computer Vision Systems (ICVS)*, 2021. 
 
- ```bibtex
+```bibtex
 @inproceedings{gutierrez2021Thermal, 
   title={Thermal Image Super-Resolution Using Second-Order Channel Attention with
   Varying Receptive Fields},
@@ -42,7 +42,7 @@ installed:
   
 Create the conda environment:
  
-`conda create -n myenv tensorflow==2.1, numpy, pip, pillow`
+`conda create -n myenv tensorflow==2.4.1, numpy==1.19.2, pip, pillow==7.2.0`
  
 Activate environment
  
