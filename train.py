@@ -5,7 +5,6 @@ import tensorflow.keras as keras
 from tensorflow.keras import datasets, layers, models, regularizers
 from  tfPreProcess import create_dataset 
 
-from sklearn.feature_extraction.image import extract_patches_2d, reconstruct_from_patches_2d
 from PIL import ImageOps, Image
 import sys
 import os

@@ -36,13 +36,14 @@ Conference on Computer Vision Systems (ICVS)*, 2021.
 ### Installation
 To run the experiments within this repository, `opencv`, `numpy`, `tensorflow`,
 and `pillow` need to be installed along with their dependencies. The experiments
-were conducted on Ubuntu 20 using an Anaconda 3 environment. To create the
-environment, run the following commands from an Ubuntu terminal with Anaconda 3
-installed:
+were conducted on Ubuntu 20 using an Anaconda 3 environment. These experiments
+were ran with a NVIDIA GPU and CUDA installed.  To create the environment, run 
+the following commands from an Ubuntu terminal with Anaconda 3 installed:
   
 Create the conda environment:
  
-`conda create -y -n myenv tensorflow==2.4.1 numpy==1.19.2  pip  pillow==7.2.0`
+`conda create -y -n myenv tensorflow==2.4.1 numpy==1.19.2  pip  pillow==7.2.0
+tensorflow-gpu==2.5.0`
  
 Activate environment:
  

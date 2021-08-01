@@ -3,7 +3,6 @@ import numpy as np
 import tensorflow.keras as keras
 from tensorflow.keras import datasets, layers, models, regularizers
 
-from sklearn.feature_extraction.image import extract_patches_2d, reconstruct_from_patches_2d
 from PIL import ImageOps, Image
 import os
 from pdb import set_trace as trace
