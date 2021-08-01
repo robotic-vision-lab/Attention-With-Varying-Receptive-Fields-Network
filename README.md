@@ -145,7 +145,12 @@ python train.py 4
 ```
 All of the results will be stored in the `./Data/` directory. Each result will
 be identified by its dataset, upscaling factor, and the name of the model.
-  
+ 
+We also created a separate driver file named `test_bicubic.py`, which will
+produce results using the bicubic interpolation baseline found in our paper.
+To produce the bicubic interpolation results, simply run the following command: 
+
+`python test_bicubic.py`
 
 ### License
 [MIT](https://github.com/robotic-vision-lab/Attention-With-Varying-Receptive-Fields-Network/blob/main/LICENSE)
