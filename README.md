@@ -116,14 +116,14 @@ datasets = ['thermal', 'div2k']`. For convenience, here is an example of how
   }
 }
 ```
- 
-We have created many different models in the file named `ModelLists.py`. The
-program is built so that the user can select several of these models as
-defined in the dictionary constructed in the `__init__(self)` method of the
-class `Model_Lists()`. If the user wants to train on additional models from the
-`ModelLists.py` file, then the user can add  to the `modelnames` list on line 
-90 of `train.py`:  
- 
+In this json, `Flir_test` refers to the Flir dataset, `320_axis_mr, 640_flir_hr,
+160_domo_lr` refers to the TDAT challenge dataset, and `KAIST` refers to the
+KAIST dataset. We have created many different models in the file named `
+ModelLists.py`. The program is built so that the user can select several of 
+these models as defined in the dictionary constructed in the `__init__(self)` 
+method of the class `Model_Lists()`. If the user wants to train on additional 
+models from the `ModelLists.py` file, then the user can add  to the `modelnames
+` list on line  90 of `train.py`:    
 `modelnames = ['rcan']` to `modelnames = ['rcan', 'rcan_DDSOCA']`
  
 
