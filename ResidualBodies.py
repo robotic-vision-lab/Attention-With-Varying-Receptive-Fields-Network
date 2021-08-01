@@ -27,7 +27,7 @@ class MDSR(layers.Layer):
           #x = x + self.rgb_mean
           return res
 class MDSR_smooth(layers.Layer):
-        "MDSR"
+        "MDSR Smooth"
         def __init__(self, f = 64, k = (3,3), n_blocks = BLOCKS):
           super(MDSR_smooth, self).__init__()
           self.head = layers.Conv2D(f,k, padding = 'same')
@@ -47,7 +47,7 @@ class MDSR_smooth(layers.Layer):
           #x = x + self.rgb_mean
           return res
 class MSRN(layers.Layer):
-        "MDSR"
+        "MSRN"
         def __init__(self, f = 64, k = (3,3), n_blocks = BLOCKS):
           super(EDSR, self).__init__()
           self.head = layers.Conv2D(f,k, padding = 'same')
@@ -69,7 +69,7 @@ class MSRN(layers.Layer):
           return x
 
 class EDSR(layers.Layer):
-        "MDSR"
+        "EDSR"
         def __init__(self, f = 64, k = (3,3), n_blocks = BLOCKS):
           super(EDSR, self).__init__()
           self.head = layers.Conv2D(f,k, padding = 'same')
@@ -91,7 +91,7 @@ class EDSR(layers.Layer):
           return x
 class rcan_smooth_body(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block with Smoothed Convolutions
         """
         def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks =
 BLOCKS):
@@ -134,7 +134,7 @@ name = 'group' + str(i)) for i in
                 return x
 class RCAN_Dense_SOCA(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block with SOCA
         """
         def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks = BLOCKS, input_shape = (48,48)):
 
@@ -151,7 +151,7 @@ class RCAN_Dense_SOCA(layers.Layer):
                 return x
 class RCAN_Dense_SOCA_smooth(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block with SOCA, Smoothed Convolutions
         """
         def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks = BLOCKS, input_shape = (48,48)):
 
@@ -168,7 +168,7 @@ class RCAN_Dense_SOCA_smooth(layers.Layer):
                 return x
 class RCAN_Dense_SOCA_smooth_res(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block with SOCA, Different Dilation Rates, Smoothed convolutions
         """
         def __init__(self, f = 64,k = (3,3) , n_blocks = BLOCKS, input_shape = (48,48)):
 
@@ -185,7 +185,7 @@ class RCAN_Dense_SOCA_smooth_res(layers.Layer):
                 return x
 class RCAN_Dense_SOCA_smooth_incr(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block with SOCA, Smoothed Dilated Convolutions, Two-level Aggregation
         """
         def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks = BLOCKS, input_shape = (48,48)):
 
@@ -204,7 +204,8 @@ class RCAN_Dense_SOCA_smooth_incr(layers.Layer):
 
 class RCAN_Dense_SOCA_stable(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block, with SOCA, dilated convolutions, 1 by
+1 kernels
         """
         def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks = BLOCKS, input_shape = (48,48)):
 
@@ -240,7 +241,7 @@ class RCAN_Dense_SOCAG(layers.Layer):
 
 class RCAN_Dense_Dilated(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block, Dilated Convolutions
         """
         def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks =
 BLOCKS):
@@ -262,7 +263,7 @@ BLOCKS):
 
 class rcan_dilated(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Bloc, dilated Convolutions
         """
         def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks =
 BLOCKS, d = 1):
@@ -283,7 +284,7 @@ n_blocks, d = d) for i in
                 return x
 class rcan_dilated_all_shared(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block, DD
         """
         def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks =
 BLOCKS, d = 1):
@@ -304,7 +305,7 @@ BLOCKS, d = 1):
 
 class rcan_summed_features(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block, summed groups
         """
         def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks =
 BLOCKS):
@@ -322,7 +323,7 @@ BLOCKS):
                 return head 
 class rcan_multi_supervision(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block, multiple supervision
         """
         def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks =
 BLOCKS, c = 1):
@@ -454,7 +455,7 @@ BLOCKS):
                 return x
 class rcan_dd_comp(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block, Dilated Convolutions
         """
         def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks =
 BLOCKS):

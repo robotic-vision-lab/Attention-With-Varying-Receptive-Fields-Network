@@ -20,7 +20,7 @@ class residual_group(layers.Layer):
                 return x
 class RG_dd(layers.Layer):
         """
-        Residual Group
+        Residual Group, Dilated Convolutions
         """
         def __init__(self, filters, name = None, n_blocks = 5):
 
@@ -37,7 +37,7 @@ class RG_dd(layers.Layer):
                 return x
 class RG_dd_comp(layers.Layer):
         """
-        Residual Group
+        Residual Group, Dilation Rates = 2
         """
         def __init__(self, filters, name = None, n_blocks = 5):
 
@@ -54,7 +54,7 @@ class RG_dd_comp(layers.Layer):
                 return x
 class smooth_group(layers.Layer):
         """
-        Residual Group
+        Residual Group, Smoothed Convolutions
         """
         def __init__(self, filters, name = None, n_blocks = 5):
 
@@ -71,7 +71,7 @@ class smooth_group(layers.Layer):
                 return x
 class RG_dilated(layers.Layer):
         """
-        Residual Group
+        Residual Group, Dialated Convolutions
         """
         def __init__(self, filters, name = None, n_blocks = 5, d = 5):
 
@@ -90,7 +90,7 @@ dilation_rate = d)
 
 class RG_features_summed(layers.Layer):
         """
-        Residual Group
+        Residual Group, Summed features in Residual Block
         """
         def __init__(self, filters, name = None, n_blocks = 5):
 
@@ -123,7 +123,7 @@ class residual_group_with_Scale_Attention(layers.Layer):
                 return x
 class dense_res_group(layers.Layer):
         """
-        Residual Group With Scale Attention
+        Residual Group With Dense Connections, Channel Attention
         """
         def __init__(self, filters, name = None, n_blocks = 5):
 
@@ -157,7 +157,7 @@ class residual_group_with_inception(layers.Layer):
                 return x
 class Dense_RG_SOCA(layers.Layer):
         """
-        Residual Group With Inception
+        Residual Group With Inception, SOCA
         """
         def __init__(self, filters, name = None, n_blocks = 5,
                      input_shape = (48,48)):
@@ -175,7 +175,7 @@ class Dense_RG_SOCA(layers.Layer):
                 return x
 class Dense_RG_SOCA_smooth(layers.Layer):
         """
-        Residual Group With Inception
+        Residual Group With SOCA, Smoothed Convolutions
         """
         def __init__(self, filters, name = None, n_blocks = 5,
                      input_shape = (48,48)):
@@ -193,7 +193,7 @@ class Dense_RG_SOCA_smooth(layers.Layer):
                 return x
 class Dense_RG_SOCA_smooth_incr(layers.Layer):
         """
-        Residual Group With Inception
+        Residual Group With multi-level aggregation, SOCA, Smoothed Convolutions
         """
         def __init__(self, filters, name = None, n_blocks = 5,
                      input_shape = (48,48)):
@@ -214,7 +214,7 @@ class Dense_RG_SOCA_smooth_incr(layers.Layer):
 
 class Dense_RG_SOCA_stable(layers.Layer):
         """
-        Residual Group With Inception
+        Residual Group with SOCA, 1 by 1 kernel sizes
         """
         def __init__(self, filters, name = None, n_blocks = 5,
                      input_shape = (48,48)):
@@ -252,7 +252,7 @@ class Dense_RG_SOCAG(layers.Layer):
                 return x
 class Dense_RG_dilated(layers.Layer):
         """
-        Residual Group With Inception
+        Residual Group with Dilated Convolutions
         """
         def __init__(self, filters, name = None, n_blocks = 5):
 

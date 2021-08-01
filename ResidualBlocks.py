@@ -7,7 +7,7 @@ from InceptionModules import *
 from FeatureExtractors import *
 class res_block(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual  Block
         """
         def __init__(self, filters, name = None):
 
@@ -42,7 +42,7 @@ class residual_channel_attention_block(layers.Layer):
                 return x
 class rcab_dd_comp(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block with Dilated Convolutions
         """
         def __init__(self, filters, name = None):
 
@@ -68,7 +68,7 @@ class MeanShift(layers.Conv2D):
 
 class rcab_dilated(layers.Layer):
         """
-        Residual Channel Attention Block
+        Residual Channel Attention Block with Dilated Convolutions and Batch Normalization
         """
         def __init__(self, filters, name = None, d = 1):
 
@@ -93,7 +93,7 @@ class rcab_dilated(layers.Layer):
 
 class rcab_features_summed(layers.Layer):
         """
-        Residual Channel Attention Block
+        Channel Attention Block (No Residual)
         """
         def __init__(self, filters, name = None):
 
