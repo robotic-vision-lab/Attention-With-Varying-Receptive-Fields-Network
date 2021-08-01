@@ -42,13 +42,13 @@ installed:
   
 Create the conda environment:
  
-`conda create -n myenv tensorflow==2.4.1 numpy==1.19.2  pip  pillow==7.2.0`
+`conda create -y -n myenv tensorflow==2.4.1 numpy==1.19.2  pip  pillow==7.2.0`
  
-Activate environment
+Activate environment:
  
 `conda activate myenv`
  
-Install opencv 
+Install opencv:
  
 `conda install -c conda-forge opencv`
  
@@ -57,7 +57,7 @@ Install opencv
 Our driver file is equipped with a simple GUI which allows the user to select
 datasets for training and testing. In our driver file, simply change the boolean
 `save_dirs` to `True`. Now, to quickly set the directories which you will be
-using, run 
+using, run:
 
 `python train.py 2`
 
@@ -68,11 +68,14 @@ supports a single training directory but multiple testing directories.
 Pressing save will save the directories to a json file named `saved_dirs.json
 `. If using the KAIST dataset, the user is recommended to place the images in 
 the root directory following the defined list in line 60. This is highly 
-recommended to do since the KAIST dataset is very large and our current 
-implementation takes every 200 images. When using the KAIST dataset for 
-evaluation, it is also recommended to simply add `"KAIST"` to the `saved_dirs.json` 
-file. For convenience, here is an example of how `saved_dirs.json` should look
-if using both thermal and RGB images.
+recommended to do since the KAIST dataset is very large and our 
+current  implementation takes every 200 images. When using the KAIST dataset 
+for  evaluation, it is also recommended to simply add `"KAIST"` to the `
+saved_dirs.json`  file. If the user is working with thermograms, then change 
+the variable `datasets` to `datasets = ['thermal'` and if the user is working 
+with both thermal and RGB data, then change the variable `datasets` to `
+datasets = ['thermal', 'div2k']`. For convenience, here is an example of how 
+`saved_dirs.json` should look if using both thermal and RGB images.
  
 ```
 {"thermal": 
