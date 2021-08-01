@@ -8,7 +8,7 @@ high-resolution images. This repository consists of a large library of different
 super-resolution models and modules along with documentation of these modules
 for thermal and RGB super-resolution. Specifically, we implement experiments
 designed to find how additions of enhanced convolutions and novel modules
-affects the performance gains for the task of super-resolution.
+affects  performance gains for the task of super-resolution.
 
 ### Purpose
 
@@ -72,7 +72,7 @@ recommended to do since the KAIST dataset is very large and our
 current  implementation takes every 200 images. When using the KAIST dataset 
 for  evaluation, it is also recommended to simply add `"KAIST"` to the `
 saved_dirs.json`  file. If the user is working with thermograms, then change 
-the variable `datasets` to `datasets = ['thermal'` and if the user is working 
+the variable `datasets` to `datasets = ['thermal']` and if the user is working 
 with both thermal and RGB data, then change the variable `datasets` to `
 datasets = ['thermal', 'div2k']`. For convenience, here is an example of how 
 `saved_dirs.json` should look if using both thermal and RGB images.
@@ -131,7 +131,7 @@ the checkpoint directory will default to `./model_name/dataset/scale`.
 
  
 ### Running Experiments
-Our experiments require that `modelnames` was set as follows: 
+Our experiments require that `modelnames` is set as follows: 
 
 `modelnames = ['rcan','rcan_dd','rcan_dd_comp','rcan_DDSOCA', 'rcan_soca']`
 
