@@ -131,7 +131,7 @@ the checkpoint directory will default to `./model_name/dataset/scale`.
 
  
 ### Running Experiments
-Our experiments first ensured that `modelnames` was set as follows: 
+Our experiments requires that `modelnames` was set as follows: 
 
 `modelnames = ['rcan','rcan_dd','rcan_dd_comp','rcan_DDSOCA', 'rcan_soca']`
 
@@ -147,8 +147,9 @@ All of the results will be stored in the `./Data/` directory. Each result will
 be identified by its dataset, upscaling factor, and the name of the model.
  
 We also created a separate driver file named `test_bicubic.py`, which will
-produce results using the bicubic interpolation baseline found in our paper.
-To produce the bicubic interpolation results, simply run the following command: 
+reproduce our results using the bicubic interpolation baseline found in our paper.
+To reproduce the bicubic interpolation results (Assuming that the datasets are
+set correctly), simply run the following command: 
 
 `python test_bicubic.py`
 
