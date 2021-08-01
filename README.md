@@ -125,12 +125,26 @@ factor, the user can run the following command in an Anaconda terminal:
 The user has the option of training, creating results, and evaluating, as
 determined by booleans in lines 53-54. However, a model must be saved to run the
 program without training.  If the user has selected a dataset and model, then
-the checkpoint directory will default to `model_name/dataset/scale`.
+the checkpoint directory will default to `./model_name/dataset/scale`.
  
 
 
  
 ### Running Experiments
+Our experiments first ensured that `modelnames` was set as follows: 
+
+`modelnames = ['rcan','rcan_dd','rcan_dd_comp','rcan_DDSOCA', 'rcan_soca']`
+
+If the user wants to run experiments to reproduce our results, then the user can
+run the following commands:
+
+```
+python train.py 2
+python train.py 3
+python train.py 4
+```
+All of the results will be stored in the `./Data/` directory. Each result will
+be identified by its dataset, upscaling factor, and the name of the model.
   
 
 ### License
