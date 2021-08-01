@@ -131,7 +131,7 @@ the checkpoint directory will default to `./model_name/dataset/scale`.
 
  
 ### Running Experiments
-Our experiments requires that `modelnames` was set as follows: 
+Our experiments require that `modelnames` was set as follows: 
 
 `modelnames = ['rcan','rcan_dd','rcan_dd_comp','rcan_DDSOCA', 'rcan_soca']`
 
