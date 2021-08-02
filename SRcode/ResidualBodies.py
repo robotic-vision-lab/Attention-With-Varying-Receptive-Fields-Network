@@ -136,12 +136,14 @@ class RCAN_Dense_SOCA(layers.Layer):
         """
         Residual Channel Attention Block with SOCA
         """
-        def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks = BLOCKS, input_shape = (48,48)):
+        def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks = BLOCK
+                     S, input_shape = (48,48)):
 
                 super(RCAN_Dense_SOCA, self).__init__()
                 self.head = layers.Conv2D(f,k, padding = 'same')
                 self.body = layers.Conv2D(f,k, padding = 'same')
-                self.residual_groups = [Dense_RG_SOCA(f,n_blocks = n_blocks, input_shape = input_shape) for i in range(n_groups)]                 
+                self.residual_groups = [Dense_RG_SOCA(f,n_blocks = n_blocks, 
+                      input_shape = input_shape) for i in range(n_groups)]                 
 
         def call(self, x):
                 head = self.head(x) 
@@ -153,12 +155,14 @@ class RCAN_Dense_SOCA_smooth(layers.Layer):
         """
         Residual Channel Attention Block with SOCA, Smoothed Convolutions
         """
-        def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks = BLOCKS, input_shape = (48,48)):
+        def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks = 
+                     BLOCKS, input_shape = (48,48)):
 
                 super(RCAN_Dense_SOCA_smooth, self).__init__()
                 self.head = layers.Conv2D(f,k, activation = 'relu', padding = 'same')
                 self.body = layers.Conv2D(f,k, activation  = 'relu',padding = 'same')
-                self.residual_groups = [Dense_RG_SOCA_smooth(f,n_blocks = n_blocks, input_shape = input_shape) for i in range(n_groups)]                 
+                self.residual_groups = [Dense_RG_SOCA_smooth(f,n_blocks = 
+                     n_blocks, input_shape = input_shape) for i in range(n_groups)]                 
 
         def call(self, x):
                 head = self.head(x) 
@@ -168,14 +172,16 @@ class RCAN_Dense_SOCA_smooth(layers.Layer):
                 return x
 class RCAN_Dense_SOCA_smooth_res(layers.Layer):
         """
-        Residual Channel Attention Block with SOCA, Different Dilation Rates, Smoothed convolutions
+        Residual Channel Attention Block with SOCA, Different Dilation Rates, 
+                     Smoothed convolutions
         """
         def __init__(self, f = 64,k = (3,3) , n_blocks = BLOCKS, input_shape = (48,48)):
 
                 super(RCAN_Dense_SOCA_smooth_res, self).__init__()
                 self.head = layers.Conv2D(f,k, activation = 'linear', padding = 'same')
                 self.body = layers.Conv2D(f,k, activation  = 'linear',padding = 'same')
-                self.residual_blocks = [RCAB_DD_Smooth_SOCA(f,input_shape = input_shape) for i in range(n_blocks)]                 
+                self.residual_blocks = [RCAB_DD_Smooth_SOCA(f,input_shape = 
+                     input_shape) for i in range(n_blocks)]                 
 
         def call(self, x):
                 head = self.head(x) 
@@ -187,12 +193,14 @@ class RCAN_Dense_SOCA_smooth_incr(layers.Layer):
         """
         Residual Channel Attention Block with SOCA, Smoothed Dilated Convolutions, Two-level Aggregation
         """
-        def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks = BLOCKS, input_shape = (48,48)):
+        def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks = 
+                     BLOCKS, input_shape = (48,48)):
 
                 super(RCAN_Dense_SOCA_smooth_incr, self).__init__()
                 self.head = layers.Conv2D(f,k, padding = 'same')
                 self.body = layers.Conv2D(f,k, padding = 'same')
-                self.residual_groups = [Dense_RG_SOCA_smooth_incr(f,n_blocks = n_blocks, input_shape = input_shape) for i in range(n_groups)]                 
+                self.residual_groups = [Dense_RG_SOCA_smooth_incr(f,n_blocks = 
+                     n_blocks, input_shape = input_shape) for i in range(n_groups)]                 
 
         def call(self, x):
                 head = self.head(x) 
@@ -225,12 +233,14 @@ class RCAN_Dense_SOCAG(layers.Layer):
         """
         Residual Channel Attention Block, Geometric merging
         """
-        def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks = BLOCKS, input_shape = (48,48)):
+        def __init__(self, f = 64,k = (3,3), n_groups = GROUPS, n_blocks = 
+                     BLOCKS, input_shape = (48,48)):
 
                 super(RCAN_Dense_SOCAG, self).__init__()
                 self.head = layers.Conv2D(f,k, padding = 'same')
                 self.body = layers.Conv2D(f,k, padding = 'same')
-                self.residual_groups = [Dense_RG_SOCAG(f,n_blocks = n_blocks, input_shape = input_shape) for i in range(n_groups)]                 
+                self.residual_groups = [Dense_RG_SOCAG(f,n_blocks = n_blocks, 
+                     input_shape = input_shape) for i in range(n_groups)]                 
 
         def call(self, x):
                 head = self.head(x) 

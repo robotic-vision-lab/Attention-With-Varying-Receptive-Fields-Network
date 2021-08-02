@@ -29,7 +29,8 @@ class residual_channel_attention_block(layers.Layer):
         def __init__(self, filters, name = None):
 
                 super(residual_channel_attention_block, self).__init__()
-                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 'conv2d-1', activation = 'relu', padding  = 'same')
+                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 
+                     'conv2d-1', activation = 'relu', padding  = 'same')
                 self.conv2 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-2', activation = 'linear', padding = 'same')
                 self.channel_attention = Channel_Attention(filters)
@@ -47,8 +48,8 @@ class rcab_dd_comp(layers.Layer):
         def __init__(self, filters, name = None):
 
                 super(rcan_dd_comp, self).__init__()
-                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name =
-'conv2d-1', activation = 'relu', padding  = 'same', dilation_rate = 2)
+                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 
+                     'conv2d-1', activation = 'relu', padding  = 'same', dilation_rate = 2)
                 self.conv2 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-2', activation = 'linear', padding = 'same',
 dilation_rate = 2)
@@ -73,8 +74,8 @@ class rcab_dilated(layers.Layer):
         def __init__(self, filters, name = None, d = 1):
 
                 super(rcab_dilated, self).__init__()
-                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name =
-'conv2d-1', activation = 'relu', padding  = 'same', dilation_rate = d)
+                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 
+                     'conv2d-1', activation = 'relu', padding  = 'same', dilation_rate = d)
                 self.conv2 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'linear', padding = 'same')
 
@@ -98,7 +99,8 @@ class rcab_features_summed(layers.Layer):
         def __init__(self, filters, name = None):
 
                 super(rcab_features_summed, self).__init__()
-                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 'conv2d-1', activation = 'relu', padding  = 'same')
+                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 
+                     'conv2d-1', activation = 'relu', padding  = 'same')
                 self.conv2 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'linear', padding = 'same')
 
@@ -121,7 +123,8 @@ class rcab_no_res(layers.Layer):
         def __init__(self, filters, name = None):
 
                 super(rcab_no_res, self).__init__()
-                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 'conv2d-1', activation = 'relu', padding  = 'same')
+                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 
+                     'conv2d-1', activation = 'relu', padding  = 'same')
                 self.conv2 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'linear', padding = 'same')
 
@@ -142,7 +145,8 @@ class RCAB_with_Scale_Attention(layers.Layer):
         def __init__(self, filters, name = None):
 
                 super(RCAB_with_Scale_Attention, self).__init__()
-                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 'conv2d-1', activation = 'relu', padding  = 'same')
+                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 
+                     'conv2d-1', activation = 'relu', padding  = 'same')
                 self.conv2 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'linear', padding = 'same')
 
@@ -167,7 +171,8 @@ class RCAB_with_inception(layers.Layer):
         def __init__(self, filters, name = None):
 
                 super(RCAB_with_inception, self).__init__()
-                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 'conv2d-1', activation = 'relu', padding  = 'same')
+                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 
+                     'conv2d-1', activation = 'relu', padding  = 'same')
                 self.conv2 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'linear', padding = 'same')
 
@@ -189,7 +194,8 @@ class RCAB_incept_dilated(layers.Layer):
 
                 super(RCAB_incept_dilated, self).__init__()
                 self.incept = incept_dilated(filters)
-                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 'conv2d-1', activation = 'relu', padding  = 'same')
+                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 
+                     'conv2d-1', activation = 'relu', padding  = 'same')
                 self.conv2 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'linear', padding = 'same')
 
@@ -256,7 +262,6 @@ class RCAB_dense_dilated_SOCA(layers.Layer):
                 self.conv2 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-2', activation = 'relu', padding = 'same',
 dilation_rate = 2)
-                #self.conv3 = layers.Conv2D(filters,kernel_size= (3,3), name =        'conv2d-3', activation = 'relu', padding = 'same', dilation_rate =3)
                 self.conv4 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-4', activation = 'linear', padding = 'same')
                 
@@ -321,12 +326,14 @@ class RCAB_DD_Smooth_SOCA(layers.Layer):
                 self.filters = filters
 
                 
-                self.conv1 = SmoothDilated(filters, k = (3,3), name ='conv2d-1', activation = 'relu', dilation_factor = 1)
+                self.conv1 = SmoothDilated(filters, k = (3,3), name ='conv2d-1',
+                      activation = 'relu', dilation_factor = 1)
                 self.conv2 = SmoothDilated(filters,k= (5,5), name ='conv2d-3',
 activation = 'relu', dilation_factor = 1)
                 self.conv3 = SmoothDilated(filters,k= (7,7), name ='conv2d-3',
 activation = 'relu', dilation_factor = 1)
-                self.conv4 = layers.Conv2D(filters,kernel_size= (3,3), name =                         'conv2d-4', activation = 'relu', padding = 'same')
+                self.conv4 = layers.Conv2D(filters,kernel_size= (3,3), name =   
+                     'conv2d-4', activation = 'relu', padding = 'same')
 
                 #self.bn1 = layers.BatchNormalization()
                 #self.bn2 = layers.BatchNormalization()
@@ -358,25 +365,14 @@ class edsr_smooth_block(layers.Layer):
                 
                 self.conv1 = SmoothDilated(filters, k = (3,3), name ='conv2d-1',
 activation = 'relu', dilation_factor = 2)
-                #self.conv2 = layers.Conv2D(filters,kernel_size= (3,3), name =                        'conv2d-2', activation = 'relu', padding = 'same')
-                #self.conv3 = SmoothDilated(filters,k= (3,3), name =
-#'conv2d-3', activation = 'relu', dilation_factor = 2)
                 self.conv4 = layers.Conv2D(filters,kernel_size= (3,3), name =                         'conv2d-4', activation = 'linear', padding = 'same')
 
-                #self.bn1 = layers.BatchNormalization()
-                #self.bn2 = layers.BatchNormalization()
-                #self.bn3 = layers.BatchNormalization()
                 self.channel_attention = Channel_Attention(filters)
                 
         def call(self, x):
 
                 skip_conn = tf.identity(x,name = 'identity')
                 x = self.conv1(x)
-                #x = self.bn1(x)
-                #x = self.conv2(x)
-                #x = self.bn2(x)
-                #x = self.conv3(x)
-                #x = self.bn3(x)
                 x = self.conv4(x)
                 x = self.channel_attention(x)
                 x = x + skip_conn
@@ -502,7 +498,8 @@ class rcab_soca(layers.Layer):
         def __init__(self, filters, name = None):
 
                 super(rcab_soca, self).__init__()
-                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 'conv2d-1', activation = 'relu', padding  = 'same')
+                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 
+                     'conv2d-1', activation = 'relu', padding  = 'same')
                 self.conv2 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'linear', padding = 'same')
                 self.channel_attention = Channel_Attention(filters)

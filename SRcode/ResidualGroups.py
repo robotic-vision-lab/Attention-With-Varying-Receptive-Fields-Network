@@ -8,7 +8,8 @@ class residual_group(layers.Layer):
         def __init__(self, filters, name = None, n_blocks = 5):
 
                 super(residual_group, self).__init__()
-                self.blocks = [residual_channel_attention_block(filters) for i in range(n_blocks)]
+                self.blocks = [residual_channel_attention_block(filters) for i 
+                     in range(n_blocks)]
                 self.conv1 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'linear', padding  = 'same')
                 
@@ -101,7 +102,8 @@ class RG_features_summed(layers.Layer):
                 
         def call(self, x):
                 for block in self.blocks: x = block(x) 
-                x = self.conv1(x)
+                x = self.conv1(
+                     x)
                 return x
 
 class residual_group_with_Scale_Attention(layers.Layer):
@@ -163,7 +165,8 @@ class Dense_RG_SOCA(layers.Layer):
                      input_shape = (48,48)):
 
                 super(Dense_RG_SOCA, self).__init__()
-                self.blocks = [RCAB_dense_dilated_SOCA(filters, input_shape = input_shape) for i in range(n_blocks)]
+                self.blocks = [RCAB_dense_dilated_SOCA(filters, input_shape = 
+                     input_shape) for i in range(n_blocks)]
                 self.conv1 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'linear', padding  = 'same')
                 
@@ -181,7 +184,8 @@ class Dense_RG_SOCA_smooth(layers.Layer):
                      input_shape = (48,48)):
 
                 super(Dense_RG_SOCA_smooth, self).__init__()
-                self.blocks = [RCAB_DD_Smooth_SOCA(filters, input_shape = input_shape) for i in range(n_blocks)]
+                self.blocks = [RCAB_DD_Smooth_SOCA(filters, input_shape = 
+                     input_shape) for i in range(n_blocks)]
                 self.conv1 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'relu', padding  = 'same')
                 
@@ -199,7 +203,8 @@ class Dense_RG_SOCA_smooth_incr(layers.Layer):
                      input_shape = (48,48)):
 
                 super(Dense_RG_SOCA_smooth_incr, self).__init__()
-                self.blocks = [RCAB_DD_Smooth_SOCA_incr(filters, input_shape = input_shape) for i in range(n_blocks)]
+                self.blocks = [RCAB_DD_Smooth_SOCA_incr(filters, input_shape = 
+                     input_shape) for i in range(n_blocks)]
                 self.conv1 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'relu', padding  = 'same')
                 
@@ -220,7 +225,8 @@ class Dense_RG_SOCA_stable(layers.Layer):
                      input_shape = (48,48)):
 
                 super(Dense_RG_SOCA_stable, self).__init__()
-                self.blocks = [RCAB_dense_dilated_SOCA_stable(filters, input_shape = input_shape) for i in range(n_blocks)]
+                self.blocks = [RCAB_dense_dilated_SOCA_stable(filters, 
+                     input_shape = input_shape) for i in range(n_blocks)]
                 self.conv1 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'linear', padding  = 'same')
                 
@@ -240,7 +246,8 @@ class Dense_RG_SOCAG(layers.Layer):
                      input_shape = (48,48)):
 
                 super(Dense_RG_SOCAG, self).__init__()
-                self.blocks = [RCAB_dense_dilated_SOCAG(filters, input_shape = input_shape) for i in range(n_blocks)]
+                self.blocks = [RCAB_dense_dilated_SOCAG(filters, input_shape = 
+                     input_shape) for i in range(n_blocks)]
                 self.conv1 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-1', activation = 'linear', padding  = 'same')
                 
