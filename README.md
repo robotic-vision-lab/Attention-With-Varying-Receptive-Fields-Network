@@ -75,6 +75,7 @@ Pressing save will save the directories to a json file named `saved_dirs.json
 the root directory following the defined list in line 60.
 
 Dataset Selection GUI
+ 
 ![dataset_gui](./Figures/dataset_gui.png)
  
 Selection of Datasets
