@@ -117,7 +117,8 @@ Up_Scale_Module,Tail]
 5, g = 5, num_models = 30):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
-                model.add(residual_channel_attention_network(f, n_blocks = b, n_groups = g))
+                model.add(residual_channel_attention_network(f, n_blocks = b, 
+                          n_groups = g))
                 model.add(Up_Scale_Module(f, scale))
                 model.add(Tail_Ens(c,num_models))
                 return model
@@ -137,8 +138,7 @@ Up_Scale_Module,Tail]
                 model.add(Up_Scale_Module(f, scale))
                 model.add(Tail(c))
                 return model
-        def get_MDSR_smooth(self,input_shape, f = 64, c = 1,scale = 2, b =
-5, g = 5):
+        def get_MDSR_smooth(self,input_shape, f = 64, c = 1,scale = 2, b = 5, g = 5):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
                 model.add(MDSR_smooth(f, n_blocks = b))
@@ -154,29 +154,31 @@ Up_Scale_Module,Tail]
                 model.add(Tail(c))
                 return model
 
-        def get_rcan_denoiser(self, input_shape, f = 64, c = 1, scale = 2, b = 5, g = 5):
+        def get_rcan_denoiser(self, input_shape, f = 64, c = 1, scale = 2, b = 
+                          5, g = 5):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
                 model.add(residual_channel_attention_network(f, n_blocks = b, n_groups = g))
                 model.add(Tail(c))
                 return model
-        def get_rcan_KIK(self,input_shape, f = 64, c = 1,scale = 2, b =
-5, g = 5):
+        def get_rcan_KIK(self,input_shape, f = 64, c = 1,scale = 2, b = 5, g = 5):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
-                model.add(residual_channel_attention_network(f, n_blocks = b, n_groups = g))
+                model.add(residual_channel_attention_network(f, n_blocks = b, 
+                          n_groups = g))
 
 
                 #model.add(multiKernelUpscale(1, c = f, scale = scale))
 
                 model.add(Up_Scale_Module(f, scale))
-                model.add(layers.Conv2D(filters = f, kernel_size = (1,1), padding = 'same'))
+                model.add(layers.Conv2D(filters = f, kernel_size = (1,1), 
+                          padding = 'same'))
 
                 model.add(Tail(c))
                 return model
 
-        def rcan_with_deconvolutions_and_incept(self,input_shape, f = 64, c =
-1,scale = 2, b = 5, g = 5):
+        def rcan_with_deconvolutions_and_incept(self,input_shape, f = 64, c = 1
+                          ,scale = 2, b = 5, g = 5):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
                 model.add(RCAN_with_inception(f, n_blocks = b))
@@ -233,16 +235,20 @@ scale, padding = 'same', kernel_size = (3,3), activation = 'linear'))
                               1, scale = 2, b = 5, g = 5):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
-                model.add(layers.Conv2D(filters = 128, kernel_size = 5, padding ='same', activation = 'relu'))
-                model.add(layers.Conv2D(filters = 128, kernel_size = 5, padding ='same', activation = 'relu'))
-                model.add(layers.Conv2D(filters = 128, kernel_size = 5, padding
-='same', activation = 'relu', dilation_rate = 2))
-                model.add(layers.Conv2D(filters = 128, kernel_size = 5, padding
-='same', activation = 'relu',dilation_rate = 2))
-                model.add(layers.Conv2D(filters = 128, kernel_size = 5, padding
-='same', activation = 'relu',dilation_rate = 2))
-                model.add(layers.Conv2D(filters = 128, kernel_size = 5, padding ='same', activation = 'relu', dilation_rate = 2))
-                model.add(layers.Conv2D(filters = 128, kernel_size = 5, padding ='same', activation = 'relu', dilation_rate = 2))
+                model.add(layers.Conv2D(filters = 128, kernel_size = 5, 
+                          padding ='same', activation = 'relu'))
+                model.add(layers.Conv2D(filters = 128, kernel_size = 5, 
+                          padding ='same', activation = 'relu'))
+                model.add(layers.Conv2D(filters = 128, kernel_size = 5, 
+                          padding ='same', activation = 'relu', dilation_rate = 2))
+                model.add(layers.Conv2D(filters = 128, kernel_size = 5, 
+                          padding ='same', activation = 'relu',dilation_rate = 2))
+                model.add(layers.Conv2D(filters = 128, kernel_size = 5, 
+                          padding ='same', activation = 'relu',dilation_rate = 2))
+                model.add(layers.Conv2D(filters = 128, kernel_size = 5, 
+                          padding ='same', activation = 'relu', dilation_rate = 2))
+                model.add(layers.Conv2D(filters = 128, kernel_size = 5, 
+                          padding ='same', activation = 'relu', dilation_rate = 2))
                 model.add(Up_Scale_Module(f, scale))
                 model.add(Tail(c))
                 return model
@@ -259,7 +265,8 @@ scale, padding = 'same', kernel_size = (3,3), activation = 'linear'))
                               1, scale = 2, b = 5, g = 5):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
-                model.add(RCAN_Dense_SOCA(f, n_blocks = b, n_groups = g, input_shape = input_shape))
+                model.add(RCAN_Dense_SOCA(f, n_blocks = b, n_groups = g, 
+                          input_shape = input_shape))
                 model.add(Up_Scale_Module(f, scale))
                 model.add(Tail(c))
                 return model
@@ -267,7 +274,8 @@ scale, padding = 'same', kernel_size = (3,3), activation = 'linear'))
                               1, scale = 2, b = 5, g = 5):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
-                model.add(RCAN_Dense_SOCA_smooth_incr(f, n_blocks = b, n_groups = g, input_shape = input_shape))
+                model.add(RCAN_Dense_SOCA_smooth_incr(f, n_blocks = b, 
+                          n_groups = g, input_shape = input_shape))
                 model.add(Up_Scale_Module(f, scale))
                 model.add(Tail(c))
                 return model
@@ -275,7 +283,8 @@ scale, padding = 'same', kernel_size = (3,3), activation = 'linear'))
                               1, scale = 2, b = 5, g = 5):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
-                model.add(RCAN_Dense_SOCA_smooth(f, n_blocks = b, n_groups = g, input_shape = input_shape))
+                model.add(RCAN_Dense_SOCA_smooth(f, n_blocks = b, n_groups = g
+                          , input_shape = input_shape))
                 model.add(Up_Scale_Module(f, scale))
                 model.add(Tail(c))
                 return model
@@ -283,7 +292,8 @@ scale, padding = 'same', kernel_size = (3,3), activation = 'linear'))
                               1, scale = 2, b = 5, g = 5,num_models = 50):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
-                model.add(RCAN_Dense_SOCA_smooth(f, n_blocks = b, n_groups = g, input_shape = input_shape))
+                model.add(RCAN_Dense_SOCA_smooth(f, n_blocks = b, n_groups = g
+                          , input_shape = input_shape))
                 model.add(Up_Scale_Module(f, scale))
                 model.add(Tail_Ens(c,num_models))
                 return model
@@ -291,7 +301,8 @@ scale, padding = 'same', kernel_size = (3,3), activation = 'linear'))
                               1, scale = 2, b = 5, g = 5,num_models = 50):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
-                model.add(RCAN_Dense_SOCA_smooth_res(f, n_blocks = b, input_shape = input_shape))
+                model.add(RCAN_Dense_SOCA_smooth_res(f, n_blocks = b, 
+                          input_shape = input_shape))
                 model.add(Up_Scale_Module(f, scale))
                 model.add(Tail_Ens(c,num_models))
                 return model
@@ -299,7 +310,8 @@ scale, padding = 'same', kernel_size = (3,3), activation = 'linear'))
                               1, scale = 2, b = 5, g = 5):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
-                model.add(RCAN_Dense_SOCA_smooth(f, n_blocks = b, n_groups = g, input_shape = input_shape))
+                model.add(RCAN_Dense_SOCA_smooth(f, n_blocks = b, n_groups = g
+                          , input_shape = input_shape))
                 model.add(Up_Scale_Module(f, scale))
                 model.add(Tail(c))
 
@@ -312,7 +324,8 @@ scale, padding = 'same', kernel_size = (3,3), activation = 'linear'))
                               1, scale = 2, b = 5, g = 5):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
-                model.add(RCAN_Dense_SOCA_stable(f, n_blocks = b, n_groups = g, input_shape = input_shape))
+                model.add(RCAN_Dense_SOCA_stable(f, n_blocks = b, n_groups = g
+                          , input_shape = input_shape))
                 
                 model.add(Up_Scale_Module(f, scale))
                 model.add(Tail(c))
@@ -324,7 +337,8 @@ scale, padding = 'same', kernel_size = (3,3), activation = 'linear'))
                               1, scale = 2, b = 5, g = 5):
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
-                model.add(RCAN_Dense_SOCAG(f, n_blocks = b, n_groups = g, input_shape = input_shape))
+                model.add(RCAN_Dense_SOCAG(f, n_blocks = b, n_groups = g, 
+                          input_shape = input_shape))
                 model.add(Up_Scale_Module(f, scale))
                 model.add(Tail(c))
                 return model
@@ -332,10 +346,12 @@ scale, padding = 'same', kernel_size = (3,3), activation = 'linear'))
         def get_rcan_DDSOCA_know(self,input_shape, f = 64, c =
                               1, scale = 2, b = 5, g = 5):
                 inputs = keras.Input(input_shape)
-                x = RCAN_Dense_SOCA(f, n_blocks = b, n_groups = g, input_shape = input_shape)(inputs)
+                x = RCAN_Dense_SOCA(f, n_blocks = b, n_groups = g, input_shape 
+                          = input_shape)(inputs)
                 x = Up_Scale_Module(f, scale)(x)
 
-                xhr = tf.image.resize(inputs, (inputs.shape[1] * scale, inputs.shape[2] * scale)) * 255
+                xhr = tf.image.resize(inputs, (inputs.shape[1] * scale, inputs.
+                          shape[2] * scale)) * 255
                 x = tf.concat([x,xhr], axis = -1)
                 hr = Tail(c, name = 'hr')(x)
                 model = keras.Model(inputs = inputs, outputs = hr)
@@ -344,8 +360,10 @@ scale, padding = 'same', kernel_size = (3,3), activation = 'linear'))
                               1, scale = 2, b = 5, g = 5):
                 inputs = keras.Input(input_shape)
 
-                hrlanczos5 = tf.image.resize(inputs, (inputs.shape[1] * scale, inputs.shape[2] * scale),method = 'lanczos5')
-                x = RCAN_Dense_SOCA(f, n_blocks = b, n_groups = g, input_shape = input_shape)(hrlanczos5)
+                hrlanczos5 = tf.image.resize(inputs, (inputs.shape[1] * scale, 
+                          inputs.shape[2] * scale),method = 'lanczos5')
+                x = RCAN_Dense_SOCA(f, n_blocks = b, n_groups = g, input_shape 
+                          = input_shape)(hrlanczos5)
                 hr = Tail(c, name = 'hr')(x)
                 model = keras.Model(inputs = inputs, outputs = hr)
                 return model
@@ -540,8 +558,8 @@ input_shape)(lr)
         def get_rcan_all_DDSOCA_stable(self,input_shape, f = 64, c =
                               1, scale = 2, b = 5, g = 5, d = 2):
                 inputs = keras.Input(input_shape)
-                x = RCAN_Dense_SOCA_stable(f, n_blocks = b,  n_groups = g, input_shape
-= input_shape)(inputs)
+                x = RCAN_Dense_SOCA_stable(f, n_blocks = b,  n_groups = g, 
+                          input_shape = input_shape)(inputs)
                 upa = Up_Scale_Module(f, 2)(x)
                 upb = Up_Scale_Module(f, 3)(x)
                 upc = Up_Scale_Module(f,2)(upa)
@@ -578,13 +596,15 @@ input_shape)(lr)
                 layer_name = 'block'
                 for i in range(b):
                    x = rcab_no_res(f)( x)
-                   x = layers.Conv2D(c,k, padding = 'same', name = layer_name + str(i))(x)
+                   x = layers.Conv2D(c,k, padding = 'same', name = layer_name 
+                          + str(i))(x)
                    
 
                    outputs.append(x)
 
                 model = keras.Model(inputs = inputs, outputs = outputs)
-                keras.utils.plot_model(model, "multi_input_and_output_model.png", show_shapes=True)
+                keras.utils.plot_model(model, "multi_input_and_output_model.png
+                          ", show_shapes=True)
 
                 return model
 
@@ -604,7 +624,8 @@ input_shape)(lr)
                 model = models.Sequential()
                 model.add(layers.InputLayer(input_shape))
                 model.add(Scale_Attention_Network(f, reduction = 1, n_blocks = b))
-                model.add(layers.Conv2DTranspose(f * 4, strides = scale, padding = 'same', kernel_size = (3,3), activation = 'linear'))
+                model.add(layers.Conv2DTranspose(f * 4, strides = scale, 
+                          padding = 'same', kernel_size = (3,3), activation = 'linear'))
 
                 model.add(Tail(c))
                 return model

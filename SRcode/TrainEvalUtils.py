@@ -53,8 +53,10 @@ val_data,  modelname, modelfunc, train_dir):
       writer = csv.writer(f)
       his = history.history
       epoch = 0
-      for nloss,npsnr,nssim,v_l,v_p,v_s in zip(his['loss'],his['psnr'],his['ssim'],his['val_loss'],his['val_psnr'],his['val_ssim']): 
-        writer.writerow([dataset,scalen,filters,model.count_params(),epoch,nloss,npsnr,nssim, v_l,v_p,v_s])
+      for nloss,npsnr,nssim,v_l,v_p,v_s in zip(his['loss'],his['psnr'],his['
+                     ssim'],his['val_loss'],his['val_psnr'],his['val_ssim']): 
+        writer.writerow([dataset,scalen,filters,model.count_params(),epoch,
+                     nloss,npsnr,nssim, v_l,v_p,v_s])
         epoch +=1
       
       
@@ -119,7 +121,8 @@ and merging of detections.
   for model_num in range(num_bayes_models):
     print(model_num)
     modelname2 = modelname + "_bayes_" + str(model_num) 
-    checkpoint_dir = os.path.join(work_dir, "model" + str(model_num) + "scale" +  str(scalen)+ '/')
+    checkpoint_dir = os.path.join(work_dir, "model" + str(model_num) + "scale" 
+                     +  str(scalen)+ '/')
     save_callback = tf.keras.callbacks.ModelCheckpoint(checkpoint_dir +
   'checkpoint' , monitor = 'val_loss', save_best_only = True)
     strategy = getStrategy()
@@ -200,7 +203,8 @@ metrics =[psnr_ens,ssim_ens])
       histories[modelname][dataset][scalen]['metrics'][os.path.basename(t_dir)] = t_dict
 
 def evaluate( test_data, test_dir, work_dir, filters, channel, scalen,
-blocks, groups, histories, modelfunc, y_shape, batch_size, dataset, creating_results, modelname, all_scales):
+blocks, groups, histories, modelfunc, y_shape, batch_size, dataset, 
+                     creating_results, modelname, all_scales):
   for t_dat, t_dir in zip(test_data, test_dir): 
       strategy = getStrategy()
       output_dir = os.path.join('Test_Save', dataset, os.path.basename(t_dir))
@@ -226,8 +230,12 @@ metrics =[psnr,ssim])
           if all_scales:evaluation =  model.evaluate(t_dat)
           else: 
               #lossn,  psnrn, ssimn  = model.evaluate(t_dat)
-              t_dat2 = create_dataset(t_dir, shuffle = True, scale_factor = scalen, y_shape = out_shape, channel = channel, batch_size = batch_size)
-              t_dat = evaluate_create_dataset(t_dir, shuffle = True, scale_factor = scalen, y_shape = out_shape, channel = channel, batch_size = batch_size, model = model, creating_results = creating_results, output_dir = output_dir) 
+              t_dat2 = create_dataset(t_dir, shuffle = True, scale_factor = 
+                     scalen, y_shape = out_shape, channel = channel, batch_size = batch_size)
+              t_dat = evaluate_create_dataset(t_dir, shuffle = True, 
+                     scale_factor = scalen, y_shape = out_shape, channel = 
+                     channel, batch_size = batch_size, model = model, 
+                     creating_results = creating_results, output_dir = output_dir) 
               #out_shape = (out_shape[0] * scalen, out_shape[1] * scalen, channel)
               metricModel = getMetricModel(out_shape)
               metricModel.compile(loss = 'mse', optimizer = 'adam', metrics = [psnr,ssim])

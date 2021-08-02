@@ -147,8 +147,10 @@ tf.float32)
             result = tf.reshape(result, result.shape[1:])
             test_input = tf.reshape(test_input, test_input.shape[1:])
         if creating_results:
-            saveImage(test_input,filename, os.path.join(output_dir,str(scale_factor), 'inputs'))
-            saveImage(result, filename, os.path.join(output_dir,str(scale_factor), 'outputs'))
+            saveImage(test_input,filename, os.path.join(output_dir,str(
+                     scale_factor), 'inputs'))
+            saveImage(result, filename, os.path.join(output_dir,str(
+                     scale_factor), 'outputs'))
         if know_induce: 
             y = {'hr': y, 'tf_op_layer_RealDiv': x}
         if car: 

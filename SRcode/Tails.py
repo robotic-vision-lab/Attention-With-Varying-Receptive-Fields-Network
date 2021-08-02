@@ -9,7 +9,8 @@ class Tail(layers.Layer):
         """
         def __init__(self, c, k = (3,3), padding = 'same', name = None):
                 super(Tail, self).__init__(name = name)
-                self.conv1 = layers.Conv2D(filters = c,kernel_size = k, padding = padding)
+                self.conv1 = layers.Conv2D(filters = c,kernel_size = k, 
+                     padding = padding)
 
         def call(self,x):
                 x =  self.conv1(x)

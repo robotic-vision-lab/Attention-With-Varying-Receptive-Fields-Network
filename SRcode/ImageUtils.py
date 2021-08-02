@@ -72,11 +72,13 @@ def getRawImage(scale,filename, random_crop = False):
       y = np.random.randint(0,hr.shape[1] + 1 - 48 * scale)
       hr = hr[x:x + 48 * scale, y : y + 48 * scale]
     
-      lr = cv2.resize(np.array(hr),(48 * scale // scale, 48 * scale //scale), cv2.INTER_CUBIC)
+      lr = cv2.resize(np.array(hr),(48 * scale // scale, 48 * scale //scale), 
+                          cv2.INTER_CUBIC)
       hr = cv2.resize(hr, (lr.shape[1] * scale, lr.shape[0] * scale))
     else:
       height, width = im.height, im.width
-      im = Image.fromarray(cv2.resize(np.array(im),(width // scale, height//scale), cv2.INTER_CUBIC))
+      im = Image.fromarray(cv2.resize(np.array(im),(width // scale, height//
+                          scale), cv2.INTER_CUBIC))
       im2 = im2.resize((im.width * scale , im.height * scale ), Image.BICUBIC)
       lr, hr = np.asarray(im), np.asarray(im2)
     lr = lr.reshape( (1,) + lr.shape + (1,))

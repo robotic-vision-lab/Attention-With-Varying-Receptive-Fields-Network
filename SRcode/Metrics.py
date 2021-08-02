@@ -11,7 +11,8 @@ _URL = 'http://rail.eecs.berkeley.edu/models/lpips'
 def _download(url, output_dir):
     """Downloads the `url` file into `output_dir`.
 
-    Modified from https://github.com/tensorflow/models/blob/master/research/slim/datasets/dataset_utils.py
+    Modified from https://github.com/tensorflow/models/blob/master/research/
+                          slim/datasets/dataset_utils.py
     """
     filename = url.split('/')[-1]
     filepath = os.path.join(output_dir, filename)
@@ -63,7 +64,8 @@ def lpips(input0, input1, model='net-lin', net='alex', version=0.1):
 
     cache_dir = os.path.expanduser('~/.lpips')
     os.makedirs(cache_dir, exist_ok=True)
-    # files to try. try a specific producer version, but fallback to the version-less version (latest).
+    # files to try. try a specific producer version, but fallback to the 
+    #version-less version (latest).
     pb_fnames = [
         '%s_%s_v%s_%d.pb' % (model, net, version, producer_version),
         '%s_%s_v%s.pb' % (model, net, version),
@@ -80,8 +82,8 @@ def lpips(input0, input1, model='net-lin', net='alex', version=0.1):
     with open(os.path.join(cache_dir, pb_fname), 'rb') as f:
         graph_def = tf.compat.v1.GraphDef()
         graph_def.ParseFromString(f.read())
-        _ = tf.import_graph_def(graph_def,
-                                input_map={input0_name: input0, input1_name: input1})
+        _ = tf.import_graph_def(graph_def, input_map={input0_name: input0, 
+                          input1_name: input1})
         distance, = default_graph.get_operations()[-1].outputs
 
     if distance.shape.ndims == 4:

@@ -26,12 +26,15 @@ class AnchorRegularizer():
       x1 = tf.cast(tf.reshape(x, [-1]), tf.float64)
       with tf.init_scope():
         if self.anchor_weights is None:
-           npanch = np.random.normal(loc = 0, scale =np.sqrt(self.anch_var), size = x1.shape)
+           npanch = np.random.normal(loc = 0, scale =np.sqrt(self.anch_var), 
+                          size = x1.shape)
            self.anchor_weights = tf.constant(npanch)
            self.anchors.append(npanch)
-      return tf.math.reduce_sum(tf.square(x1 - self.anchor_weights)) * self.weights_lambda / self.n_data
+      return tf.math.reduce_sum(tf.square(x1 - self.anchor_weights)) * self.
+                          weights_lambda / self.n_data
     def bias_anchor(x):
-      return tf.math.sum(tf.square(weights - self.bias_weights)) * self.weights_lambda / self.n_data
+      return tf.math.sum(tf.square(weights - self.bias_weights)) * self.
+                          weights_lambda / self.n_data
       
     def bias_anchor(weights):
       """

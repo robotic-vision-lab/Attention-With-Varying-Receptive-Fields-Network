@@ -246,7 +246,8 @@ class SmoothDilated (layers.Layer):
     self.fix_w = tf.zeros(shape = [self.fix_w_size, self.fix_w_size,1,1,1])
     self.mask = np.zeros([self.fix_w_size,self.fix_w_size,1,1,1])
     self.mask[dilation_factor -1][ dilation_factor -1][ 0][0][0] = 1
-    self.conv = layers.Conv2D(filters = f, kernel_size = k, padding = 'same', dilation_rate = self.dilation_factor, activation = activation)
+    self.conv = layers.Conv2D(filters = f, kernel_size = k, padding = 'same', 
+                          dilation_rate = self.dilation_factor, activation = activation)
 
   def call(self,x):
     fix_w = tf.add(self.fix_w, self.mask)

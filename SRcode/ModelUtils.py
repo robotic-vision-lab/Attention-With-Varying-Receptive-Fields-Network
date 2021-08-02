@@ -48,8 +48,9 @@ def load_model_ens(checkpoints, input_shape, channels):
     :param channels - number of channels in input
     :returns  keras model built form checkpoint
     """ 
-    model = keras.models.load_model(checkpoints, custom_objects =
-            {psnr_ens.__name__: psnr_ens,ssim_ens.__name__: ssim, ens_mse.__name__:ens_mse} )
+    model = keras.models.load_model(checkpoints, custom_objects = {psnr_ens.
+                          __name__: psnr_ens,ssim_ens.__name__: ssim, ens_mse.
+                          __name__:ens_mse} )
     model.build((None,) + input_shape + (channels,))
     return model
 def initialize_from_model_with_layers(model1,model2_dir, layers = [0,-2,-1]):

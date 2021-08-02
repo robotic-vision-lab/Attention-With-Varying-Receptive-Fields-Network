@@ -105,9 +105,11 @@ if __name__ == '__main__':
               ################################################################
               with open('./Data/train_'+ dataset + str(scale) + modelname + '.csv', 'w', newline = '\n') as f:
                 writer = csv.writer(f)
-                writer.writerow(['Dataset','scale','Filters','Parameters','Epoch','Loss','PSNR','SSIM'])
+                writer.writerow(['Dataset','scale','Filters','Parameters','
+                     Epoch','Loss','PSNR','SSIM'])
               for t_dir in test_dir:
-                with open('./Data/test' + os.path.basename(t_dir) + str(scale) + modelname + '.csv', 'w', newline = '\n') as f:
+                with open('./Data/test' + os.path.basename(t_dir) + str(scale) 
+                     + modelname + '.csv', 'w', newline = '\n') as f:
                   writer = csv.writer(f)
                   writer.writerow(['Dataset','Test Set','scale','Filters','Parameters','loss','psnr', 'ssim', 'lossstd', 'psnrstd', 'ssimstd'])
               ################################################################
@@ -117,7 +119,8 @@ if __name__ == '__main__':
               if not os.path.exists(work_dir): 
                 os.makedirs(work_dir) 
               c_dir = os.path.join(work_dir, str(scale) + '/')
-              model = modelfunc((100 ,100,channel), f= filters, c = channel, scale = scale, b = blocks, g = groups)  
+              model = modelfunc((100 ,100,channel), f= filters, c = channel, 
+                     scale = scale, b = blocks, g = groups)  
               model.compile(loss = 'mse', optimizer = 'adam', metrics =[psnr,ssim])
               model.summary()
               
@@ -128,11 +131,13 @@ if __name__ == '__main__':
               for epoch in range(epochs):
                 print('epoch ', epoch, '/', epochs)
                 idx = 0
-                train_data = {i: getRawImage(scale,os.path.join(train_dir,filename),True)for i,filename in enumerate(os.listdir(train_dir))}
+                train_data = {i: getRawImage(scale,os.path.join(train_dir,
+                     filename),True)for i,filename in enumerate(os.listdir(train_dir))}
                 train_indices = list(range(len(train_data)))
                 for idx in range(len(train_data.keys())//batch_size):
                   ids = random.choices(train_indices, k = batch_size)
-                  batchx,batchy = [train_data[idx][0] for idx in ids],[train_data[idx][1] for idx in ids]
+                  batchx,batchy = [train_data[idx][0] for idx in ids],[
+                     train_data[idx][1] for idx in ids]
                   lr ,hr= np.concatenate(batchx, axis = 0), np.concatenate(batchy,axis = 0)
                   hr = hr.astype(np.float32)
                   model._layers[0] = layers.InputLayer((lr.shape[1],lr.shape[2],channel))
@@ -141,7 +146,8 @@ if __name__ == '__main__':
                     ### GET MODEL PREDICTION
                     ##########################################################
                     pred = model(lr)
-                    l1_reg_term = sum([tf.reduce_sum(tf.abs(_var)) for _var in model.trainable_variables])
+                    l1_reg_term = sum([tf.reduce_sum(tf.abs(_var)) for _var in 
+                     model.trainable_variables])
                     loss = mse(hr,pred)# .0001 *l1_reg_term
                     psnrn = psnr(hr,pred)
                     ssimn = ssim(hr,pred)
@@ -154,7 +160,8 @@ if __name__ == '__main__':
                   opt.apply_gradients(zip(grads,model.trainable_variables))
                   with open('./Data/train_' +dataset + str(scale) + modelname + '.csv', 'a', newline = '\n') as f:
                     writer = csv.writer(f)
-                    writer.writerow([dataset,scale,filters,model.count_params(),epoch,loss.numpy(),psnrn.numpy(),ssimn.numpy()])
+                    writer.writerow([dataset,scale,filters,model.count_params
+                     (),epoch,loss.numpy(),psnrn.numpy(),ssimn.numpy()])
                   #if loss.numpy()< best_loss: 
                   #  best_loss = loss.numpy()
                   if epoch == epochs - 1 and save:
@@ -189,7 +196,8 @@ if __name__ == '__main__':
                           if creating_results and epoch == epochs -1 or epoch == 0 :
                               pd =Image.fromarray(pred.numpy().squeeze().astype(np.uint8))
                               lrd = Image.fromarray((lr * 255).squeeze().astype(np.uint8))
-                              if not os.path.exists(work_dir + '/' +os.path.basename(t_dir)+ '/predictions'):
+                              if not os.path.exists(work_dir + '/' +os.path.
+                                     basename(t_dir)+ '/predictions'):
                                 os.makedirs(work_dir + '/' + os.path.basename(t_dir) + '/predictions')
                               if not os.path.exists(work_dir  + '/'+ os.path.basename(t_dir) + '/inputs'):
                                 os.makedirs(work_dir + '/'+ os.path.basename(t_dir)+ '/inputs')

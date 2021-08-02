@@ -169,13 +169,17 @@ if __name__ == '__main__':
               ################################################################
               ### CREATE HEADERS FOR DATA TO BE SAVED
               ################################################################
-              with open('./Data/train_' + dataset + str(scale) + method + modelname + '.csv', 'w', newline = '\n') as f:
+              with open('./Data/train_' + dataset + str(scale) + method + 
+                     modelname + '.csv', 'w', newline = '\n') as f:
                 writer = csv.writer(f)
-                writer.writerow(['Dataset','scale','Filters','Parameters','Epoch','Loss','PSNR','SSIM'])
+                writer.writerow(['Dataset','scale','Filters','Parameters','
+                     Epoch','Loss','PSNR','SSIM'])
               for t_dir in test_dir:
-                with open('./Data/test' + os.path.basename(t_dir) + str(scale) + method + modelname + '.csv', 'w', newline = '\n') as f:
+                with open('./Data/test' + os.path.basename(t_dir) + str(scale) 
+                     + method + modelname + '.csv', 'w', newline = '\n') as f:
                   writer = csv.writer(f)
-                  writer.writerow(['Dataset','Test Set','scale','Filters','Parameters','loss','psnr', 'ssim', 'lossstd', 'psnrstd', 'ssimstd'])
+                  writer.writerow(['Dataset','Test Set','scale','Filters','
+                     Parameters','loss','psnr', 'ssim', 'lossstd', 'psnrstd', 'ssimstd'])
               work_dir = os.path.join(modelname, dataset, str(scale))
               if not os.path.exists(work_dir): os.makedirs(work_dir) 
               c_dir = os.path.join(work_dir, str(scale) + '/')
@@ -203,7 +207,8 @@ if __name__ == '__main__':
                     lr,hr = getRawImage(scale,filename)
                     hr = hr.astype(np.float32)
                     sr = Image.fromarray((lr * 255).squeeze())
-                    pred = np.expand_dims(np.array(sr.resize((sr.width * scale,sr.height * scale))), axis = -1)
+                    pred = np.expand_dims(np.array(sr.resize((sr.width * scale,
+                     sr.height * scale))), axis = -1)
                     pred = np.expand_dims(pred, axis = 0)
                     loss = mse(hr,pred)
                     psnrn = psnr(hr,pred)
@@ -229,7 +234,8 @@ if __name__ == '__main__':
                   with open('./Data/test'+os.path.basename(t_dir) +
 str(scale) + method + modelname + '.csv', 'a', newline = '\n') as f:
                     writer = csv.writer(f)
-                    writer.writerow([dataset,os.path.basename(t_dir),scale,filters,0,lossmean,psnrmean,ssimmean, lossstd,ssimstd,psnrstd])                 
+                    writer.writerow([dataset,os.path.basename(t_dir),scale,
+                     filters,0,lossmean,psnrmean,ssimmean, lossstd,ssimstd,psnrstd])                 
           restore = True 
         epochs = 5
         tf.keras.backend.clear_session()

@@ -12,7 +12,8 @@ class res_block(layers.Layer):
         def __init__(self, filters, name = None):
 
                 super(res_block, self).__init__()
-                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name = 'conv2d-1', activation = 'relu', padding  = 'same')
+                self.conv1 = layers.Conv2D(filters, kernel_size = (3,3), name 
+                          = 'conv2d-1', activation = 'relu', padding  = 'same')
                 self.conv2 = layers.Conv2D(filters,kernel_size= (3,3), name =
                         'conv2d-2', activation = 'linear', padding = 'same')
         def call(self, x):
