@@ -16,7 +16,7 @@ affects  performance gains for the task of super-resolution.
 <img src="./Figures/Input33_flir_4x.png" width="250">  <img src="./Figures/Output33_flir_4x.png" width="250"> <img src="./Figures/33_flir_GT.jpg" width="250">
 ### Purpose
 
-This software contains deep learning and computer vision code that may be used
+This software contains deep learning and computer vision code that may be used for
 Thermal Image Super-Resolution although it may also be used for super-resolution
 of the visual image space. This repository was created to contain experiments
 and numerous super-resolution models for our 2021 International Conference on
