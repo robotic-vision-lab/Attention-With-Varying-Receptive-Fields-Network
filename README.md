@@ -1,9 +1,7 @@
 ### Attention-With-Varying-Receptive-Fields-Network
  [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/keras-team/keras/blob/master/LICENSE)
 ![model_overview](./Figures/model_overview.png)
-![im1](./Figures/Input10_domo_4x.png)![im2](./Figures/Output10_domo_4x.png)
-
-
+<img src="./Figures/Input10_domo_4x.png" width="100">  <img src="./Figures/Output10_domo_4x.png" width="100">
 ### Overview
 
 A key application in computer vision is performing super-resolution of degraded
