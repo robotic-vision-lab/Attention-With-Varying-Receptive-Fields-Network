@@ -72,7 +72,7 @@ adding a new directory to the list of directories. As of now, the program only
 supports a single training directory but multiple testing directories. 
 Pressing save will save the directories to a json file named `saved_dirs.json
 `. If using the KAIST dataset, the user is recommended to place the images in 
-the root directory following the defined list in line 60.
+the root directory following the defined list in line 60 of `train.py`.
 
 Dataset Selection GUI
  
