@@ -72,14 +72,18 @@ adding a new directory to the list of directories. As of now, the program only
 supports a single training directory but multiple testing directories. 
 Pressing save will save the directories to a json file named `saved_dirs.json
 `. If using the KAIST dataset, the user is recommended to place the images in 
-the root directory following the defined list in line 60. This is highly 
-recommended to do since the KAIST dataset is very large and our 
-current  implementation takes every 200 images. When using the KAIST dataset 
-for  evaluation, it is also recommended to simply add `"KAIST"` to the `
-saved_dirs.json`  file. If the user is working with thermograms, then change 
-the variable `datasets` to `datasets = ['thermal']` and if the user is working 
-with both thermal and RGB data, then change the variable `datasets` to `
-datasets = ['thermal', 'div2k']`. For convenience, here is an example of how 
+the root directory following the defined list in line 60.
+
+![dataset_gui](./Figures/dataset_gui.png)
+![dataset_selection](./Figures/data_selection.png)
+
+ This is highly  recommended to do since the KAIST dataset is very large and 
+our  current  implementation takes every 200 images. When using the KAIST 
+dataset  for  evaluation, it is also recommended to simply add `"KAIST"` to 
+the ` saved_dirs.json`  file. If the user is working with thermograms, then 
+change  the variable `datasets` to `datasets = ['thermal']` and if the user is 
+working  with both thermal and RGB data, then change the variable `datasets` 
+to `datasets = ['thermal', 'div2k']`. For convenience, here is an example of how 
 `saved_dirs.json` should look if using both thermal and RGB images.
  
 ```
