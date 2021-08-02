@@ -74,7 +74,11 @@ Pressing save will save the directories to a json file named `saved_dirs.json
 `. If using the KAIST dataset, the user is recommended to place the images in 
 the root directory following the defined list in line 60.
 
+Dataset Selection GUI
 ![dataset_gui](./Figures/dataset_gui.png)
+ 
+Selection of Datasets
+ 
 ![dataset_selection](./Figures/data_selection.png)
 
  This is highly  recommended to do since the KAIST dataset is very large and 
