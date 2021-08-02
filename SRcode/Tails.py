@@ -17,7 +17,7 @@ class Tail(layers.Layer):
                 return x
 class Tail_Ens(layers.Layer):
         """
-        Tail 
+        Tail Ensemble
         """
         def __init__(self, c, num_models = 100, name = None):
                 super(Tail_Ens, self).__init__(name = name)

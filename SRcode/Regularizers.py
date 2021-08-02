@@ -47,6 +47,9 @@ distribution.
       """
       return tf.sum(tf.square(weights - self.bias_weights)) * self.weights_lambda / n_data
 def add_regularizer(model, strength, n_weights, noise, batch_size):
+    """ 
+    This adds regularization to every layer in a model
+    """ 
     for layer in model.layers:
         if layer.trainable == True:
             areg = AnchorRegularizer(strength,n_weights,noise,batch_size)

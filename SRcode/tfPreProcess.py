@@ -13,6 +13,9 @@ AUTOTUNE = tf.data.experimental.AUTOTUNE
 
 def resize(x, scale_factor = 2, y_shape = (120,120), testing = False,
 image_size = None, all_scales = False):
+        """ 
+        Returns resized tensor
+        """ 
         if testing: size = [image_size[0] // scale_factor,image_size[1] //
 scale_factor] 
         else: size = [y_shape[0] //scale_factor, y_shape[1] //scale_factor] 
@@ -25,7 +28,9 @@ scale_factor], method = tf.image.ResizeMethod.BICUBIC)
 i/4)], method = tf.image.ResizeMethod.BICUBIC, antialias = True) for i in [2,3,4]]
         return x, y
 def saveImage(x,  filename, dst_dir):
-
+  """ 
+  Saves tensor to filename in dst_dir
+  """ 
   if not os.path.exists(dst_dir): os.makedirs(dst_dir)
   filename = dst_dir + '/' + filename
   channels = x[-1]
@@ -33,28 +38,43 @@ def saveImage(x,  filename, dst_dir):
   tf.io.write_file(filename, jpeg)
 
 def normalize(x):
+        """ 
+        Divides  input tensor by 255
+        :returns normalized input tensor
+        """ 
         x = tf.divide(tf.cast(x, dtype = tf.float32),tf.constant([255], dtype =
 tf.float32))
-
-
         return x
 
 def random_crop(x, y_shape, channel = 1):
+        """ 
+        :returns a randomly cropped tensor from x with shape of y_shape
+        """ 
         stacked_image =x
         cropped_image = tf.image.random_crop( stacked_image, size=[
 y_shape[0], y_shape[1], channel])
 
         return cropped_image
 def brightness_adjust(x):
-
+        """ 
+        :returns tensor with brightness randomly adjusted
+        """ 
         stacked_image = x
         adjusted_image = tf.image.random_brightness(stacked_image, 125)
         return adjusted_image
 def random_hue(x):
+        """ 
+        Randomly adjusts hue
+        :returns x with hue randomly adjusted
+        """ 
         stacked_image = x
         hueImage = tf.image.random_hue(stacked_image,0.2)
         return hueImage
 def gaussian_noise(x):
+        """ 
+        Adds Gaussian Noise
+        :returns tensor with added Gaussian Noise
+        """ 
         noise = tf.random.normal(tf.shape(x), mean = 0, stddev = 10,dtype
 = tf.float32)
         x = tf.add(x,noise)
