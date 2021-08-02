@@ -220,7 +220,8 @@ class RCAN_Dense_SOCA_stable(layers.Layer):
                 super(RCAN_Dense_SOCA_stable, self).__init__()
                 self.head = layers.Conv2D(f,k, padding = 'same')
                 self.body = layers.Conv2D(f,k, padding = 'same')
-                self.residual_groups = [Dense_RG_SOCA_stable(f,n_blocks = n_blocks, input_shape = input_shape) for i in range(n_groups)]                 
+                self.residual_groups = [Dense_RG_SOCA_stable(f,n_blocks = 
+                          n_blocks, input_shape = input_shape) for i in range(n_groups)]                 
 
         def call(self, x):
                 head = self.head(x) 
