@@ -67,7 +67,7 @@ using, run:
 `python train.py 2`
 
 You will be presented with a GUI which allows you to select the proper dataset.
-Use `set and reset` when erasing the current entry and `Add Directory` when
+Use `Set and Reset` when erasing the current entry and `Add Directory` when
 adding a new directory to the list of directories. As of now, the program only
 supports a single training directory but multiple testing directories. 
 Pressing save will save the directories to a json file named `saved_dirs.json
