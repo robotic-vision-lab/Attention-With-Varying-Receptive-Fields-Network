@@ -1,6 +1,4 @@
 ## Attention With Varying Receptive Fields Network
- [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/keras-team/keras/blob/master/LICENSE)
-
 ### Overview
 
 A key application in computer vision is performing super-resolution of degraded
@@ -188,4 +186,4 @@ correctly), simply run the following command:
 
 ### License
 
-[MIT](https://github.com/robotic-vision-lab/Attention-With-Varying-Receptive-Fields-Network/blob/main/LICENSE)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/robotic-vision-lab/Attention-With-Varying-Receptive-Fields-Network/blob/main/LICENSE)
