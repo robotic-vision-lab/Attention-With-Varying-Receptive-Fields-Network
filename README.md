@@ -44,7 +44,7 @@ To run the experiments within this repository, `opencv`, `numpy`, `tensorflow`,
 and `pillow` need to be installed along with their dependencies. The experiments
 were conducted on Ubuntu 20 using an Anaconda 3 environment. These experiments
 were ran with a NVIDIA GPU and CUDA installed.  To create the environment, run 
-the following commands from an Ubuntu terminal with Anaconda 3 installed:
+the following commands from an Ubuntu terminal with Anaconda 3 installed.
   
 Create the conda environment:
  
