@@ -9,7 +9,7 @@ high-resolution images. This repository consists of a large library of different
 super-resolution models and modules along with documentation of these modules
 for thermal and RGB super-resolution. Specifically, we implement experiments
 designed to find how additions of enhanced convolutions and novel modules
-affects  performance gains for the task of super-resolution.
+encompasses in our Attention with Varying Receptive Fields Network (AVRFN) affects  performance gains for the task of super-resolution.
 ![model_overview](./Figures/model_overview.png)
 <!---
 <img src="./Figures/Input10_domo_4x.png" width="250">  <img src="./Figures/Output10_domo_4x.png" width="250"> <img src="./Figures/10_domo_GT.jpg" width="250">
