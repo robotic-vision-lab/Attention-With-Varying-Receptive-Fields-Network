@@ -11,9 +11,11 @@ for thermal and RGB super-resolution. Specifically, we implement experiments
 designed to find how additions of enhanced convolutions and novel modules
 affects  performance gains for the task of super-resolution.
 ![model_overview](./Figures/model_overview.png)
-#(<img src="./Figures/Input10_domo_4x.png" width="250">  <img src="./Figures/Output10_domo_4x.png" width="250"> <img src="./Figures/10_domo_GT.jpg" width="250">)
-#(<img src="./Figures/Input32_axis_4x.png" width="250">  <img src="./Figures/Output32_axis_4x.png" width="250"> <img src="./Figures/32_axis_GT.jpg" width="250">)
-#<img src="./Figures/Input33_flir_4x.png" width="250">  <img src="./Figures/Output33_flir_4x.png" width="250"> <img src="./Figures/33_flir_GT.jpg" width="250">
+<!---
+<img src="./Figures/Input10_domo_4x.png" width="250">  <img src="./Figures/Output10_domo_4x.png" width="250"> <img src="./Figures/10_domo_GT.jpg" width="250">
+<img src="./Figures/Input32_axis_4x.png" width="250">  <img src="./Figures/Output32_axis_4x.png" width="250"> <img src="./Figures/32_axis_GT.jpg" width="250">
+<img src="./Figures/Input33_flir_4x.png" width="250">  <img src="./Figures/Output33_flir_4x.png" width="250"> <img src="./Figures/33_flir_GT.jpg" width="250">
+-->
 ### Purpose
 
 This software contains deep learning and computer vision code that may be used for
