@@ -103,7 +103,8 @@ if __name__ == '__main__':
               ################################################################
               ### CREATE HEADER OF TESTING AND TRAINING RESULTS
               ################################################################
-              with open('./Data/train_'+ dataset + str(scale) + modelname + '.csv', 'w', newline = '\n') as f:
+              with open('./Data/train_'+ dataset + str(scale) + modelname + '.
+                          csv', 'w', newline = '\n') as f:
                 writer = csv.writer(f)
                 writer.writerow(['Dataset','scale','Filters','Parameters','
                      Epoch','Loss','PSNR','SSIM'])
@@ -111,7 +112,8 @@ if __name__ == '__main__':
                 with open('./Data/test' + os.path.basename(t_dir) + str(scale) 
                      + modelname + '.csv', 'w', newline = '\n') as f:
                   writer = csv.writer(f)
-                  writer.writerow(['Dataset','Test Set','scale','Filters','Parameters','loss','psnr', 'ssim', 'lossstd', 'psnrstd', 'ssimstd'])
+                  writer.writerow(['Dataset','Test Set','scale','Filters','
+                          Parameters','loss','psnr', 'ssim', 'lossstd', 'psnrstd', 'ssimstd'])
               ################################################################
               ### COMPILE MODEL AND CREATE WORKING DIRECTORY IF IT DOES NOT EXIST
               ################################################################
@@ -152,13 +154,15 @@ if __name__ == '__main__':
                     psnrn = psnr(hr,pred)
                     ssimn = ssim(hr,pred)
                     grads = tape.gradient(loss,model.trainable_variables)
-                  print('loss: ', loss.numpy(), 'ssim: ', ssimn.numpy(), 'psnr: ', psnrn.numpy())
+                  print('loss: ', loss.numpy(), 'ssim: ', ssimn.numpy(), 'psnr
+                          : ', psnrn.numpy())
                   if idx % 10 == 0: print('step: ', idx)
                   ############################################################
                   ### Apply Weight Updates
                   ############################################################
                   opt.apply_gradients(zip(grads,model.trainable_variables))
-                  with open('./Data/train_' +dataset + str(scale) + modelname + '.csv', 'a', newline = '\n') as f:
+                  with open('./Data/train_' +dataset + str(scale) + modelname 
+                          + '.csv', 'a', newline = '\n') as f:
                     writer = csv.writer(f)
                     writer.writerow([dataset,scale,filters,model.count_params
                      (),epoch,loss.numpy(),psnrn.numpy(),ssimn.numpy()])
@@ -186,7 +190,8 @@ if __name__ == '__main__':
                           
                           lr,hr = getRawImage(scale,filename)
                           hr = hr.astype(np.float32)
-                          model._layers[0] = layers.InputLayer((lr.shape[1],lr.shape[2],channel))
+                          model._layers[0] = layers.InputLayer((lr.shape[1],lr.
+                                model._layers[0] = layers.InputLayer((lr.shape[1],lr.
                           pred = model(lr) 
                           lossn,psnrn,ssimn = mse(hr,pred),psnr(hr,pred), ssim(hr,pred)
                           losses.append(lossn);psnrs.append(psnrn);ssims.append(ssimn);
@@ -197,20 +202,25 @@ if __name__ == '__main__':
                               pd =Image.fromarray(pred.numpy().squeeze().astype(np.uint8))
                               lrd = Image.fromarray((lr * 255).squeeze().astype(np.uint8))
                               if not os.path.exists(work_dir + '/' +os.path.
-                                     basename(t_dir)+ '/predictions'):
-                                os.makedirs(work_dir + '/' + os.path.basename(t_dir) + '/predictions')
+                                    if not os.path.exists(work_dir + '/' +os.path.
+                                os.makedirs(work_dir + '/' + os.path.basename(
+                                      os.makedirs(work_dir + '/' + os.path.basename(
                               if not os.path.exists(work_dir  + '/'+ os.path.basename(t_dir) + '/inputs'):
                                 os.makedirs(work_dir + '/'+ os.path.basename(t_dir)+ '/inputs')
                               pd.save(os.path.join(work_dir,os.path.basename(t_dir) + '/predictions/image' + str(tidx) + '.png'))
                               lrd.save(os.path.join(work_dir,os.path.basename(t_dir)+ '/inputs/image' + str(tidx) + '.png'))
-                        lossmean,ssimmean,psnrmean= np.mean(losses),np.mean(ssims), np.mean(psnrs)
+                        lossmean,ssimmean,psnrmean= np.mean(losses),np.mean(
+                              lossmean,ssimmean,psnrmean= np.mean(losses),np.mean(
                         lossstd,ssimstd,psnrstd = np.std(losses),np.std(ssims),np.std(psnrs)
                         ######################################################
                         ### WRITE DATA TO ./DATA/ DIRECTORY
                         ######################################################
-                        with open('./Data/test'+os.path.basename(t_dir) + str(scale) + modelname + '.csv', 'a', newline = '\n') as f:
+                        with open('./Data/test'+os.path.basename(t_dir) + str(
+                              with open('./Data/test'+os.path.basename(t_dir) + str(
                           writer = csv.writer(f)
-                          writer.writerow([dataset,os.path.basename(t_dir),scale,filters,model.count_params(),lossmean,psnrmean,ssimmean, lossstd,ssimstd,psnrstd])                 
+                          writer.writerow([dataset,os.path.basename(t_dir),
+                               scale,filters,model.count_params(),lossmean,
+                               psnrmean,ssimmean, lossstd,ssimstd,psnrstd])                 
 
               ################################################################
               ## Learning Rate Schedule
