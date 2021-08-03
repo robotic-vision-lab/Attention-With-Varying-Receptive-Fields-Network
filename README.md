@@ -3,11 +3,12 @@
 
 A key application in computer vision is performing super-resolution of degraded
 images by learning a mapping from low-resolution to high-resolution. This
-repository consists of a library of various super-resolution models and modules,
-along with documentation, for thermal and RGB super-resolution.  Specifically,
-we implement experiments designed to find how additions of enhanced convolutions
-and novel modules encompassed in our attention with varying receptive fields
-network (AVRFN) affects performance gains for the task of super-resolution.
+repository consists of a library of various super-resolution models and
+modules, along with documentation, for thermal and RGB super-resolution.
+Specifically, we implement experiments designed to determine how additions of
+enhanced convolutions and novel modules encompassed in our attention with
+varying receptive fields network (AVRFN) affects performance gains for the task
+of image super-resolution.
 
 ![model_overview](./Figures/model_overview.png)
 
