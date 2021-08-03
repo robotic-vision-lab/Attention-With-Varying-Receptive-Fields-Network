@@ -42,10 +42,10 @@ Conference on Computer Vision Systems (ICVS)*, 2021.
 To run the experiments within this repository, `opencv`, `numpy`, `tensorflow`,
 and `pillow` need to be installed along with their dependencies. The experiments
 were conducted on an Ubuntu 20.04 machine using an Anaconda 3 environment. The
-experiments were run with a NVIDIA GPU and CUDA. To create the environment, run
+experiments were run with an NVIDIA GPU and CUDA. To create the environment, run
 the following commands from a terminal with Anaconda 3 installed.
   
-Create the conda environment:
+Create the Anaconda environment:
  
 `conda create -y -n myenv tensorflow==2.4.1 numpy==1.19.2  pip  pillow==7.2.0
 tensorflow-gpu==2.5.0`
@@ -60,20 +60,20 @@ Install OpenCV:
  
 ### Usage
  
-Our driver file is equipped with a simple GUI which allows you to select
-datasets for training and testing. In the driver file, simply change the boolean
-`save_dirs` to `True`. Next, to quickly set the directories which you will be
-using run the following command:
+Our driver file is equipped with a simple GUI that allows you to select
+datasets for training and testing. In the driver file, simply change the
+boolean `save_dirs` to `True`. Next, to quickly set the directories which you
+will be using run the following command:
 
 `python train.py 2`
 
 You will be presented with a GUI which allows you to select the proper dataset.
-Use `Set and Reset` when erasing the current entry and `Add Directory` when
+Use `Set and Reset` when erasing the current entry, and `Add Directory` when
 adding a new directory to the list of directories. As of now, the program only
 supports a single training directory but multiple testing directories.  Pressing
 save will write the directories to a JSON file named `saved_dirs.json`. If using
 the KAIST dataset, we recommend that you place the images in the root directory
-following the defined list in line 60 of `train.py`.
+following the defined list on line 60 of `train.py`.
 
 #### Dataset Selection GUI
  
