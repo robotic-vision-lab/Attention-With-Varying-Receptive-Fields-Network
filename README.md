@@ -156,7 +156,7 @@ factor, the user can run the following command in an Anaconda terminal:
 `python train.py 4`
 
 The user has the option of training, creating results, and evaluating, as
-determined by booleans in lines 53-54. However, a model must be saved to run the
+determined by booleans in lines 53-55. However, a model must be saved to run the
 program without training.  If the user has selected a dataset and model, then
 the checkpoint directory will default to `./model_name/dataset/scale`.
 
