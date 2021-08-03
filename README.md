@@ -142,7 +142,7 @@ and `KAIST` refers to the
 created many different  models in the file named ` ModelLists.py`. The program 
 is built so that the  user can select several of  these models as defined in 
 the dictionary  constructed in the `__init__(self)`  method of the class `
-Model_Lists()`. If  the user wants to train on additional  models from the `
+Model_Lists` of `ModelLists.py`. If  the user wants to train on additional  models from the `
 ModelLists.py` file,  then the user can add  to the `modelnames ` list on 
 line  90 of `train.py`:
  
