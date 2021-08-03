@@ -133,9 +133,9 @@ to `datasets = ['thermal', 'div2k']`. For convenience, here is an example of how
 ```
 In this json, `Flir_test` refers to 
 the 
-[Flir thermal dataset for algorithm training](https://www.flir.com/oem/adas/adas-dataset-form/), 
+[FLIR Thermal Dataset for Algorithm Training](https://www.flir.com/oem/adas/adas-dataset-form/), 
 `320_axis_mr, 640_flir_hr, 160_domo_lr` refers to the 
-[thermal image super resolution challenge
+[Thermal Image Super Resolution Challenge
 dataset](https://pbvs-workshop.github.io/datasets.html), 
 and `KAIST` refers to the 
 [KAIST dataset](https://soonminhwang.github.io/rgbt-ped-detection/). We have 
