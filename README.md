@@ -32,7 +32,7 @@ Conference on Computer Vision Systems (ICVS)*, 2021.
   title={Thermal image super-resolution using second-order channel attention with varying receptive fields},
   author={Gutierrez, Nolan B and Beksi, William J},
   booktitle={Proceedings of the International Conference on Computer Vision Systems (ICVS)},
-  pages={},
+  pages={3--13},
   year={2021}
 }
 ``` 
