@@ -1,4 +1,5 @@
 ## Attention With Varying Receptive Fields Network
+
 ### Overview
 
 A key application in computer vision is performing super-resolution of degraded
@@ -7,25 +8,23 @@ repository consists of a library of various super-resolution models and
 modules, along with documentation, for thermal and RGB super-resolution.
 Specifically, we implement experiments designed to determine how additions of
 enhanced convolutions and novel modules encompassed in our attention with
-varying receptive fields network (AVRFN) affects performance gains for the task
-of image super-resolution.
+varying receptive fields network affects performance gains for the task of
+image super-resolution.
 
-![model_overview](./Figures/model_overview.png)
+<p align="center">
+<img src='./Figures/model_overview.png'>
+</p>
 
-### Purpose
+This repository was created to contain the experiments and super-resolution
+models for our 2021 ICVS paper titled "[Thermal Image Super-Resolution Using
+Second-Order Channel Attention with Varying Receptive
+Fields](https://arxiv.org/pdf/2108.00094.pdf)." The software contains deep
+learning and computer vision code not only for thermal image super-resolution,
+but also for super-resolution of the visual image space. 
 
-This software contains deep learning and computer vision code not only for
-thermal image super-resolution, but also for super-resolution of the visual
-image space. The repository was created to contain experiments and
-super-resolution models for our 2021 International Conference on Computer Vision
-Systems paper entitled "[Thermal Image Super-Resolution Using Second-Order
-Channel Attention with Varying Receptive
-Fields](https://arxiv.org/pdf/2108.00094.pdf)." If you find this project useful,
-then please consider citing our work:
- 
-N. B. Gutierrez and W. J. Beksi, "Thermal Image Super-Resolution Using Second-
-Order Channel Attention With Varying Receptive Fields," *International 
-Conference on Computer Vision Systems (ICVS)*, 2021. 
+### Citation
+
+If you find this project useful, then please consider citing our work. 
 
 ```bibtex
 @inproceedings{gutierrez2021thermal, 
