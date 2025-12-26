@@ -12,7 +12,7 @@ receptive fields network affects performance gains for the task of image
 super-resolution.
 
 <p align="center">
-<img src='./Figures/model_overview.png'>
+  <img src="./Figures/model_overview.png" alt="model overview">
 </p>
 
 This repository was created to contain the experiments and super-resolution
